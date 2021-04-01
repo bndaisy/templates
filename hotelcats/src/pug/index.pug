@@ -1,8 +1,21 @@
 extends ../components/__system/layout/default
 include ../components/header/header
+include ../components/nav/nav
+include ../components/burger-menu/burger-menu
+include ../components/logo/logo
+include ../components/icon/icon
 
 block head
   include ../components/page/home-page/variables
 
+block styles
+  link(href="css/main.min.css", rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet")
+
 block body
+  +header(page)
+    +logo('header')
+      +icon('/', 'logo', 'logo')
+    +burger-menu('header')
+    +nav('header', links)
 

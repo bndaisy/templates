@@ -1,0 +1,14 @@
+.home-page
+  &__header
+    display: grid
+    grid-template-columns: 1fr minmax(min-content, max-content)
+    align-items: center
+
+    max-width: $max-width
+    width: 100%
+
+
+@media all and ( min-width: 768px)
+  .home-page
+    &__header
+      grid-template-columns: minmax(min-content, max-content) 1fr

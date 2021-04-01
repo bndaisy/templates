@@ -1,0 +1,12 @@
+=icon($width-min, $width-max, $height-min, $height-max)
+
+  $width-step: $width-max - $width-min
+  $height-step: $height-max - $height-min
+
+  width: calc(#{ $width-min + px } + #{ $width-step + $width-step * 0.7 } * ((100vw - 320px) / #{ $max-width }))
+  height: calc(#{ $height-min + px } + #{ $height-step + $height-step * 0.7 } * ((100vw - 320px) / #{ $max-width }))
+
+
+  @media all and ( min-width: 1024px )
+    width: calc(#{ $width-min + px } + #{ $width-step } * (100vw / #{ $max-width }))
+    height: calc(#{ $height-min+ px } + #{ $height-step } * (100vw / #{ $max-width }))

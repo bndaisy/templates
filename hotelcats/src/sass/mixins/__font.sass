@@ -1,0 +1,25 @@
+=font($font-size-min, $font-size-max, $font-weight, $font-family, $line-height: normal, $letter-spacing: normal)
+
+  $font-size-step: $font-size-max - $font-size-min
+  $font-size: calc(#{ $font-size-min + px } + #{ $font-size-step + $font-size-step * 0.7 } * ((100vw - 320px) / #{ $max-width }))
+
+  font-size: $font-size
+  font-weight: $font-weight
+  font-family: $font-family
+
+  // Line-height
+  @if $line-height == normal
+    line-height: normal
+  @else
+    line-height: $line-height / $font-size
+
+  // Letter-spacing
+  @if $letter-spacing == normal
+    letter-spacing: normal
+  @else
+    letter-spacing: #{$letter-spacing / $font-size}rem
+
+
+  @media all and ( min-width: 1024px )
+    $font-size: calc(#{ $font-size-min + px } + #{ $font-size-step } * (100vw / #{ $max-width }))
+    font-size: $font-size

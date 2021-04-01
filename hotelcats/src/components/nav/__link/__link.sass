@@ -1,0 +1,34 @@
+.header
+  .nav
+    &__link
+      display: block
+
+      padding: 0.75rem
+
+      +font(20, 28, 500, $font-family__font--secondary)
+      color: $palette__text--primary
+
+.header
+  .nav__item--dynamic
+    .nav
+      &__link
+        +font(16, 24, 400, $font-family__font--secondary)
+
+
+@media all and ( min-width: 600px )
+  .header
+    .nav
+      &__link
+        padding: 1rem
+
+        +font(16, 16, 400, $font-family__font--primary)
+
+
+@media all and (min-width: 1024px)
+  .header
+    .nav
+      &__link
+        transition: all 0.3s ease-in-out
+
+        &:hover
+          color: $palette__accent--primary

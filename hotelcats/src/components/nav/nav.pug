@@ -1,7 +1,7 @@
 include ../dropdown/dropdown
 
 //-  Links принимает ассоциативный массив типа [{title: value, url: value}]
-mixin nav(links, parent)
+mixin nav(parent, links)
 	nav.nav(class = `${parent}__nav`)
 		ul.nav__list
 			- for (let i in links)

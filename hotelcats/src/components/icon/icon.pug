@@ -1,3 +1,3 @@
-mixin icon(path, name, parent)
+mixin icon(path, parent, name)
     svg.icon(class=`${parent}__icon icon--${name}`)
-        use(xlink:href=`${path}svg/sprite.svg#${name}`)
+        use(xlink:href=`${path}icons/sprite.svg#${name}`)
