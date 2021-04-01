@@ -1,0 +1,14 @@
+include ../dropdown/dropdown
+
+//-  Links принимает ассоциативный массив типа [{title: value, url: value}]
+mixin nav(links, parent)
+	nav.nav(class = `${parent}__nav`)
+		ul.nav__list
+			- for (let i in links)
+				if (links[i].dropdown)
+					li.nav__item
+						a.nav__link(href = `/${links[i].url}`)= links[i].title
+						+dropdown(links[i].dropdown, `nav`)
+				else
+					li.nav__item
+						a.nav__link(href = `/${links[i].url}`)= links[i].title

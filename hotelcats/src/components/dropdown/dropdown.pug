@@ -1,0 +1,5 @@
+mixin dropdown(links, parent)
+  ul.dropdown(class = `${parent}__dropdown`)&attributes(attributes)
+    - for(let i in links)
+      li.dropdown__item
+        a.dropdown__link(href='/' + links[i].url)= links[i].title
