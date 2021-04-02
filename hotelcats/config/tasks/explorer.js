@@ -12,7 +12,7 @@ import config from '../config';
 const explorer = () => {
   watch(`${config.src.root}/**/*.pug`, markup);
   watch([`${config.src.sass}/**/*.sass`, `${config.src.components}/**/*.sass`], styles);
-  watch(`${config.src.js}/**/*.js`, scripts);
+  watch([`${config.src.js}/**/*.js`, `${config.src.components}/**/*.js`], scripts);
   watch(`${config.src.fonts}/**/*`, fonts);
   watch(`${config.src.images}/**/*`, images);
   watch(`${config.src.icons}/**/*.svg`, icons);
