@@ -1,9 +1,39 @@
 //- Head
-- let title = `Home-page`;
-- let page = `home-page`;
-- let path = `./`;
+- const title = `Hotel 'Cats'`;
+- const page = `home-page`;
+- const path = `./`;
 
 //- Body
 
 //- Nav
 - const links = [{ title: 'Почему мы?', url: '#' }, { title: 'Номера', url: 'pages/catalog.html' }, { title: 'Отзывы', url: '#' }, { title: 'Как нас найти', url: '#' }];
+
+//- Banner
+-
+  const banner = {
+    phone: {
+      path: '/images/banner',
+      modificator: 'phone',
+      type: 'webp',
+      alt: 'Котейка. Уютная гостиница для котов и кошек' },
+    tablet: {
+      path: '/images/banner',
+      modificator: 'tablet',
+      type: 'webp',
+      alt: 'Котейка. Уютная гостиница для котов и кошек' },
+    desktop: {
+      path: '/images/banner',
+      modificator: 'desktop',
+      type: 'webp',
+      alt: 'Котейка. Уютная гостиница для котов и кошек' },
+    content: {
+      headline: 'Котейка',
+      textline: 'Уютная гостиница для котов и кошек',
+      button: {
+        parent: 'banner',
+        content: 'Забронировать',
+        icon: {
+          path: '/',
+          name: 'paw-primary',
+          parent: 'banner' }}}};
+

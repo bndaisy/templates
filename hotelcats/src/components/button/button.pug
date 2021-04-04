@@ -1,0 +1,14 @@
+include ../icon/icon
+
+mixin button(type, attr)
+  - const modifier = attr.modifier && attr.modifier !== '' ? ` button--${attr.modifier}` : '';
+  - const isEmpty = (obj) => JSON.stringify(obj) == '{}';
+
+  if (type !== 'button')
+    a.button(class = `${attr.parent}__button${modifier}`)= attr.content
+      if (attr.icon && !isEmpty(attr.icon))
+        +icon(attr.icon.path, attr.icon.parent, attr.icon.name)
+  else
+    button.button(class = `${attr.parent}__button${modifier}`)= attr.content
+      if (attr.icon && !isEmpty(attr.icon))
+        +icon(attr.icon.path, attr.icon.parent, attr.icon.name)

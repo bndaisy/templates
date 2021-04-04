@@ -4,6 +4,9 @@ include ../components/nav/nav
 include ../components/burger-menu/burger-menu
 include ../components/logo/logo
 include ../components/icon/icon
+include ../components/button/button
+include ../components/content/content
+include ../components/banner/banner
 
 block head
   include ../components/page/home-page/variables
@@ -18,6 +21,9 @@ block body
       +icon('/', 'logo', 'logo')
     +burger-menu('header')
     +nav('header', links)
+  +content(page)
+    +banner('content', banner)
+      +button('link', banner.content.button)
 
   script(src="js/main.js")
 
