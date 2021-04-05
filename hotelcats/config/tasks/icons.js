@@ -1,10 +1,15 @@
-import gulp from 'gulp';
+import gulp, { series } from 'gulp';
 import svg from 'gulp-svg-sprite';
 
 import config from '../config';
 
-const icons = () => (
-  gulp.src(`${config.src.icons}/**/*.svg`)
+const transfer = () => (
+  gulp.src(`${config.src.icons}/background/*.svg`)
+    .pipe(gulp.dest(`${config.build.icons}/background/`))
+);
+
+const sprite = () => (
+  gulp.src(`${config.src.icons}/*.svg`)
     .pipe(svg({
       mode: {
         symbol: {
@@ -25,5 +30,7 @@ const icons = () => (
     }))
     .pipe(gulp.dest(config.build.icons))
 );
+
+const icons = (done) => series(transfer, sprite)(done);
 
 export default icons;

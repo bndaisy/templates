@@ -7,6 +7,7 @@ include ../components/icon/icon
 include ../components/button/button
 include ../components/content/content
 include ../components/banner/banner
+include ../components/features/features
 
 block head
   include ../components/page/home-page/variables
@@ -24,6 +25,7 @@ block body
   +content(page)
     +banner('content', banner)
       +button('link', banner.content.button)
+    +features('Почему мы?', 'content', features)
 
   script(src="js/main.js")
 

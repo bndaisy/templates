@@ -5,7 +5,7 @@ mixin nav(parent, links)
 	nav.nav(class = `${parent}__nav`)
 		ul.nav__list
 			- for (let i in links)
-				if (links[i].dropdown)
+				if links[i].dropdown
 					li.nav__item
 						a.nav__link(href = `/${links[i].url}`)= links[i].title
 						+dropdown(links[i].dropdown, `nav`)

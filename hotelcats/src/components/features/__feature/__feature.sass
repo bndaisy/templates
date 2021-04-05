@@ -1,0 +1,42 @@
+.features
+  &__feature
+    display: flex
+    flex-direction: column
+
+    z-index: 1
+    box-sizing: border-box
+
+    max-width: 100%
+    border-radius: 0.5rem
+    padding: 1.5rem
+
+    background-color: $palette__background--primary
+    box-shadow: 0 0 25px rgba($palette__shadow--primary, 0.25)
+
+.features
+  .feature
+    &__headline
+      +font(18, 22, 500, $font-family__font--secondary, 130%)
+      color: $palette__text--primary
+
+      margin-bottom: 1.25rem
+
+    &__textline
+      +font(15, 16, 400, $font-family__font--primary, 130%)
+      color: $palette__text--primary
+
+    &__icon
+      +icon(60, 90, 60, 90)
+      margin-bottom: 1.875rem
+
+
+@media all and ( min-width: 1024px )
+  .features
+    &__feature
+      max-width: 23.125rem
+      padding: 1.875rem
+
+  .features
+    .feature
+      &__icon
+        margin-bottom: 2rem

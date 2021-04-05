@@ -3,10 +3,23 @@
 - const page = `home-page`;
 - const path = `./`;
 
+
 //- Body
 
 //- Nav
-- const links = [{ title: 'Почему мы?', url: '#' }, { title: 'Номера', url: 'pages/catalog.html' }, { title: 'Отзывы', url: '#' }, { title: 'Как нас найти', url: '#' }];
+-
+  const links = [{
+      title: 'Почему мы?',
+      url: '#' },
+    {
+      title: 'Номера',
+      url: 'pages/catalog.html' },
+    {
+      title: 'Отзывы',
+      url: '#' },
+    {
+      title: 'Как нас найти',
+      url: '#' }];
 
 //- Banner
 -
@@ -36,4 +49,49 @@
           path: '/',
           name: 'paw-primary',
           parent: 'banner' }}}};
+
+//- Features
+-
+  const features = [{
+      headline: 'Комфортная температура',
+      textline: 'Во всех номерах поддерживается комфортная температура в пределах 23 - 25 градусов. В каждом номере можно дополнительно отрегулировать температуру.',
+      icon: {
+        path: '/',
+        name: 'temperature',
+        parent: 'feature' } },
+    {
+      headline: 'Видеонаблюдение',
+      textline: 'Мы предоставляем доступ в нашу систему. Вы сможете следить за своим питомцем со своего смартфона или компьютера',
+      icon: {
+        path: '/',
+        name: 'video',
+        parent: 'feature' } },
+    {
+      headline: 'Услуги Зоотакси',
+      textline: 'Мы приедем за вашим питомцем в любой район Санкт-Петербурга.',
+      icon: {
+        path: '/',
+        name: 'taxi',
+        parent: 'feature' } },
+    {
+      headline: 'Сбалансированное питание',
+      textline: 'Вы можете привезти свой корм или доверить рацион своего питомца нашим профессионалам.',
+      icon: {
+        path: '/',
+        name: 'food',
+        parent: 'feature' } },
+    {
+      headline: 'Ежедневные прогулки',
+      textline: 'По вашему желанию мы выгуливаем вашего питомца два раза в день на специализированной закрытой территории.',
+      icon: {
+        path: '/',
+        name: 'walk',
+        parent: 'feature' } },
+    {
+      headline: 'Лучшие ветеринары',
+      textline: 'В гостинице 24 часа дежурит ветеринарный врач, который окажет любую помощь в случае необходимости.',
+      icon: {
+        path: '/',
+        name: 'medicine',
+        parent: 'feature' } }];
 

@@ -1,0 +1,20 @@
+include ../icon/icon
+
+//- Content принимает ассоциативный массив вида [{ headline: value, textline: value, icon: { path: value, iconName: value, parentClass: value } }]
+
+mixin features(title, parent, content)
+  - let isEmpty = (obj) => JSON.stringify(obj) == '{}';
+
+  article.features(class = `${parent}__features`)
+    h2.features__title= title
+    - for (let i in content)
+      +feature(content[i].headline, content[i].textline)
+        unless isEmpty(content[i].icon)
+          +icon(content[i].icon.path, content[i].icon.parent, content[i].icon.name)
+
+
+mixin feature(headline, textline)
+  section.feature.features__feature
+    block
+    h2.feature__headline= headline
+    p.feature__textline= textline

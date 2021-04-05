@@ -1,0 +1,22 @@
+.features
+  &__title
+    justify-self: center
+
+    +font(28, 36, 700, $font-family__font--secondary)
+    color: $palette__text--primary
+
+    margin-bottom: 1.25rem
+
+
+@media all and ( min-width: 660px )
+  .features
+    &__title
+      grid-column: span 2
+
+
+@media all and ( min-width: 1024px )
+  .features
+    &__title
+      grid-column: span 3
+
+      margin-bottom: 3.125rem
