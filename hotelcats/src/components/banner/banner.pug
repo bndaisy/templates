@@ -1,5 +1,5 @@
-mixin banner(parent, { phone, tablet, desktop, content })
-  article.banner(class = `${parent}__banner`)
+mixin banner({ phone, tablet, desktop, content })
+  article.banner(class = `${attributes.parent}__banner`)
     picture
       source(srcset=`${phone.path}/banner__img--${phone.modificator}.${phone.type}` alt=`${phone.alt}`, media='(max-width: 320px)')
       source(srcset=`${tablet.path}/banner__img--${tablet.modificator}.${tablet.type}` alt=`${tablet.alt}`, media='(min-width: 321px) and (max-width: 768px)')

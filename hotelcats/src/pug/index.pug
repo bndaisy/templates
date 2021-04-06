@@ -8,24 +8,37 @@ include ../components/button/button
 include ../components/content/content
 include ../components/banner/banner
 include ../components/features/features
+include ../components/carousel/carousel
+include ../components/rooms-card/rooms-card
 
 block head
   include ../components/page/home-page/variables
 
 block styles
-  link(href="css/main.min.css", rel="stylesheet")
-  link(href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet")
+  link(href='https://unpkg.com/swiper/swiper-bundle.min.css', rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Rubik:wght@300;400;500;700&display=swap', rel='stylesheet')
+  link(href='css/main.min.css', rel='stylesheet')
+
 
 block body
-  +header(page)
-    +logo('header')
+  +header()&attributes({ 'parent': `${ page }` })
+    +logo()&attributes({ 'parent': 'header' })
       +icon('/', 'logo', 'logo')
-    +burger-menu('header')
-    +nav('header', links)
+    +burger-menu()&attributes({ 'parent': 'header' })
+    +nav(links)&attributes({ 'parent': 'header' })
   +content(page)
-    +banner('content', banner)
+    +banner(banner)&attributes({ 'parent': 'content' })
       +button('link', banner.content.button)
-    +features('Почему мы?', 'content', features)
+    +features('Почему мы?', features)&attributes({ 'parent': 'content' })
+    +carousel(carousel.rooms, carousel.togglers)
+      - for (let room in rooms)
+        +rooms-card(rooms[room].img)&attributes({ 'class': ' swiper-slide', 'parent': 'carousel' })
+          h3.rooms-card__headline= rooms[room].content.headline
+          ul.rooms-card__list
+            - for (let i in rooms[room].content.list)
+              li.rooms-card__textline= rooms[room].content.list[i]
+          +button('button', rooms[room].button)
 
-  script(src="js/main.js")
+  script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+  script(src='js/main.js')
 

@@ -95,3 +95,91 @@
         name: 'medicine',
         parent: 'feature' } }];
 
+
+//- Carousels
+-
+  const carousel = {
+    rooms: {
+      parent: 'content',
+      modifier: 'rooms',
+      title: 'Номера'
+    },
+    togglers: {
+      left: {
+        parent: 'carousel',
+        modifier: 'toggler-left swiper-button-prev',
+        icon: {
+          path: '/',
+          name: 'chevron-left',
+          parent: 'carousel' }},
+      right: {
+        parent: 'carousel',
+        modifier: 'toggler-right swiper-button-next',
+        icon: {
+          path: '/',
+          name: 'chevron-right',
+          parent: 'carousel' }}
+    }};
+
+//- Rooms
+-
+  const rooms = [{
+      img: {
+        path: '/',
+        modifier: 'economy',
+        type: '.webp',
+        alt: 'Эконом плюс'},
+      content: {
+        headline: 'Эконом плюс',
+        list: [
+          'Площадь - 0,90 м2',
+          'Размеры (ШхГхВ) — 90х100х180 см',
+          'Цена за сутки: 200₽']},
+      button: {
+        parent: 'rooms-card',
+        content: 'Забронировать',
+        icon: {
+          path: '/',
+          name: 'paw-secondary',
+          parent: 'rooms-card' }}},
+    {
+      img: {
+        path: '/',
+        modifier: 'comfort',
+        type: '.webp',
+        alt: 'Комфорт' },
+      content: {
+        headline: 'Комфорт',
+        list: [
+          'Площадь - 1,13 м2',
+          'Размеры (ШхГхВ) - 100х125х180 см',
+          'Цена за сутки: 250₽']},
+      button: {
+        parent: 'rooms-card',
+        content: 'Забронировать',
+        icon: {
+          path: '/',
+          name: 'paw-secondary',
+          parent: 'rooms-card' }}},
+    {
+      img: {
+        path: '/',
+        modifier: 'suite',
+        type: '.webp',
+        alt: 'Сьют' },
+      content: {
+        headline: 'Сьют',
+        list: [
+          'Площадь - 1,56 м2',
+          'Размеры (ШхГхВ) - 125х125х180 см',
+          'Цена за сутки: 350₽']},
+      button: {
+        parent: 'rooms-card',
+        content: 'Забронировать',
+        icon: {
+          path: '/',
+          name: 'paw-secondary',
+          parent: 'rooms-card' }}}
+    ];
+
+

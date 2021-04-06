@@ -1,12 +1,13 @@
 include ../icon/icon
+include ../title/title
 
 //- Content принимает ассоциативный массив вида [{ headline: value, textline: value, icon: { path: value, iconName: value, parentClass: value } }]
 
-mixin features(title, parent, content)
+mixin features(title, content)
   - let isEmpty = (obj) => JSON.stringify(obj) == '{}';
 
-  article.features(class = `${parent}__features`)
-    h2.features__title= title
+  article.features(class = `${attributes.parent}__features`)
+    +title('features', title)
     - for (let i in content)
       +feature(content[i].headline, content[i].textline)
         unless isEmpty(content[i].icon)

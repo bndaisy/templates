@@ -1,0 +1,27 @@
+.rooms-card
+  &__textline
+    position: relative
+
+    +font(15, 16, 400, $font-family__font--primary, 1)
+
+    padding-left: 1rem
+
+    &::before
+      content: ''
+      display: block
+
+      position: absolute
+      top: .125rem
+      left: -.125rem
+
+      width: .75rem
+      height: .75rem
+      border-radius: 50%
+
+      background-color: $palette__accent--secondary
+
+    &:not(:last-child)
+      margin-bottom: 1.25rem
+
+
+
