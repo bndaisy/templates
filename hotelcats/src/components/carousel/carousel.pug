@@ -5,12 +5,13 @@ include ../button/button
 mixin carousel(content, togglers)
  - const modifier = content.modifier ? ` carousel--${content.modifier}` : '';
 
-  article.carousel(class = `${content.parent}__carousel${modifier} swiper-container`)
+  article.carousel(class = `${content.parent}__carousel${modifier}`)
     +title('carousel', content.title)
-    section.carousel__container.swiper-wrapper
-      block
-    section.carousel__navigation
-      .carousel__indicators.swiper-pagination
-      .carousel__togglers
-        +button('button', togglers.left)
-        +button('button', togglers.right)
+    .carousel__wrapper.swiper-container
+      .carousel__container.swiper-wrapper
+        block
+      .carousel__navigation
+        .carousel__indicators.swiper-pagination
+        .carousel__togglers
+          +button('button', togglers.left)
+          +button('button', togglers.right)

@@ -1,3 +1,16 @@
 .carousel
   &__rooms-card
+    position: relative
+
+    display: grid
+    grid-template-columns: auto
+
     flex: 0 0 100%
+
+
+@media all and ( min-width: 600px )
+  .carousel
+    &__rooms-card
+      grid-template-columns: minmax(442px, 2fr) 1fr
+
+      flex: 0 0 100%

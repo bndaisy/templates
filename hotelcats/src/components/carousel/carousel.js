@@ -1,5 +1,5 @@
 if (document.querySelector('.carousel')) {
-  const rooms = new Swiper('.carousel--rooms', {
+  const rooms = new Swiper('.carousel--rooms > .carousel__wrapper', {
     wrapperClass: 'carousel__container',
     slideClass: 'carousel__rooms-card',
     navigation: {
@@ -14,7 +14,8 @@ if (document.querySelector('.carousel')) {
       bulletActiveClass: 'is-active'
     },
     slidePerView: 1,
-    spaceBetween: 17
+    spaceBetween: 32
+    // Добавить брекпоинты и закинуть в них spaceBetween
   });
 }
 

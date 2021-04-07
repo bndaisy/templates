@@ -21,23 +21,22 @@ block styles
 
 
 block body
-  +header()&attributes({ 'parent': `${ page }` })
-    +logo()&attributes({ 'parent': 'header' })
+  +header(page)
+    +logo('header')
       +icon('/', 'logo', 'logo')
-    +burger-menu()&attributes({ 'parent': 'header' })
-    +nav(links)&attributes({ 'parent': 'header' })
+    +burger-menu('header')
+    +nav('header', links)
   +content(page)
-    +banner(banner)&attributes({ 'parent': 'content' })
+    +banner('content', banner)
       +button('link', banner.content.button)
-    +features('Почему мы?', features)&attributes({ 'parent': 'content' })
+    +features('content', 'Почему мы?', features)
     +carousel(carousel.rooms, carousel.togglers)
       - for (let room in rooms)
-        +rooms-card(rooms[room].img)&attributes({ 'class': ' swiper-slide', 'parent': 'carousel' })
+        +rooms-card('carousel', rooms[room].img, rooms[room].button)&attributes({ 'class': ' swiper-slide' })
           h3.rooms-card__headline= rooms[room].content.headline
           ul.rooms-card__list
             - for (let i in rooms[room].content.list)
               li.rooms-card__textline= rooms[room].content.list[i]
-          +button('button', rooms[room].button)
 
   script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
   script(src='js/main.js')
