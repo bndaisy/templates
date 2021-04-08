@@ -1,0 +1,20 @@
+.carousel
+  &__comments-card
+    display: grid
+    grid-template-columns: minmax(min-content, max-content) auto
+    column-gap: .75rem
+
+    flex: 0 0 100%
+
+    padding: 1.5rem
+    max-width: 470px
+    box-shadow: 0 0 25px rgba($palette__shadow--primary, 0.25)
+
+
+@media all and ( min-width: 768px )
+  .carousel
+    &__comments-card
+      grid-template-columns: minmax(min-content, max-content) repeat(2, auto)
+      row-gap: 1.5rem
+
+      padding: 2rem

@@ -10,6 +10,7 @@ include ../components/banner/banner
 include ../components/features/features
 include ../components/carousel/carousel
 include ../components/rooms-card/rooms-card
+include ../components/comments-card/comments-card
 
 block head
   include ../components/page/home-page/variables
@@ -37,6 +38,13 @@ block body
           ul.rooms-card__list
             - for (let i in rooms[room].content.list)
               li.rooms-card__textline= rooms[room].content.list[i]
+    +carousel(carousel.comments, carousel.togglers)
+      - for (let comment in comments)
+        +comments-card('carousel')&attributes({ 'class': ' swiper-slide' })
+          +icon('/', 'comments-card', 'quotes')
+          p.comments-card__textline= comments[comment].textContent
+          span.comments-card__signature= comments[comment].author
+          span.comments-card__signature= comments[comment].date
 
   script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
   script(src='js/main.js')

@@ -1,0 +1,15 @@
+.comments-card
+  &__signature
+    display: none
+
+    +font(14, 14, 400, $font-family__font--primary)
+    color: $palette__text--another
+
+    &:last-child
+      justify-self: end
+
+
+@media all and ( min-width: 768px )
+  .comments-card
+    &__signature
+      display: block
