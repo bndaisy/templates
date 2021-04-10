@@ -1,0 +1,18 @@
+mixin about(parent, { title, contacts, socials })
+  article.about(class = `${parent}__about`)
+    .about__contacts
+      +title('about', title)
+
+      - for (let contact in contacts)
+        .about__contact
+          h3.about__headline= contacts[contact].headline
+          a.about__textline&attributes(contacts[contact].attributes)= contacts[contact].textline
+
+      if (socials)
+        - const { headline, icons } = socials;
+
+        .about__contact
+          h3.about__headline= headline
+          +socials('about', icons)
+
+    .about__map

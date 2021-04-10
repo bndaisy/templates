@@ -15,8 +15,8 @@ if (document.querySelector('.carousel')) {
     },
     slidePerView: 1,
     spaceBetween: 32
-    // Добавить брекпоинты и закинуть в них spaceBetween
   });
+
   const comments = new Swiper('.carousel--comments > .carousel__wrapper', {
     wrapperClass: 'carousel__container',
     slideClass: 'carousel__comments-card',

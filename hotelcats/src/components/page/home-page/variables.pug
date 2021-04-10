@@ -99,32 +99,32 @@
 //- Carousels
 -
   const carousel = {
-    rooms: {
-      parent: 'content',
-      modifier: 'rooms',
-      title: 'Номера'
-    },
-    comments:{
-      parent: 'content',
-      modifier: 'comments',
-      title: 'Отзывы'
-    },
-    togglers: {
-      left: {
-        parent: 'carousel',
-        modifier: 'toggler-left',
-        icon: {
-          path: '/',
-          name: 'chevron-left',
-          parent: 'carousel' }},
-      right: {
-        parent: 'carousel',
-        modifier: 'toggler-right',
-        icon: {
-          path: '/',
-          name: 'chevron-right',
-          parent: 'carousel' }}
-    }};
+      rooms: {
+        parent: 'content',
+        modifier: 'rooms',
+        title: 'Номера'
+      },
+      comments:{
+        parent: 'content',
+        modifier: 'comments',
+        title: 'Отзывы'
+      },
+      togglers: {
+        left: {
+          parent: 'carousel',
+          modifier: 'toggler-left',
+          icon: {
+            path: '/',
+            name: 'chevron-left',
+            parent: 'carousel' }},
+        right: {
+          parent: 'carousel',
+          modifier: 'toggler-right',
+          icon: {
+            path: '/',
+            name: 'chevron-right',
+            parent: 'carousel' }}
+      }};
 
 //- Rooms
 -
@@ -202,3 +202,46 @@
       author: 'Павел Нечаев',
       date: '2 августа, 2019' }];
 
+//- About
+-
+  const about = {
+    title: 'Как нас найти',
+    contacts: [{
+        headline: 'Адрес',
+        textline: `Санкт-Петербург, ул. Большая Конюшенная, д. 19`
+      },
+      {
+        headline: 'Режим работы',
+        textline: 'Ежедневно, с 9:00 до 20:00'
+      },
+      {
+        headline: 'Телефон',
+        textline: '8 (800) 333-55-99',
+        attributes: {
+          href : 'tel:+78003335599'}},
+      {
+        headline: 'E-mail',
+        textline: 'info@cat-hotel.ru',
+        attributes: {
+          href: 'mailto:info@cat-hotel.ru' }}],
+    socials: {
+      headline: 'Социальные сети',
+      icons: [{
+          path: '/',
+          parent: 'socials',
+          name: 'fb',
+          attributes: {
+            href: '#' }},
+        {
+          path: '/',
+          parent: 'socials',
+          name: 'ig',
+          attributes: {
+            href: '#' }},
+        {
+          path: '/',
+          parent: 'socials',
+          name: 'vk',
+          attributes: {
+            href: '#' }}]}
+  };

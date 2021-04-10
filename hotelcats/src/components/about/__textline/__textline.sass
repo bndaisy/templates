@@ -1,0 +1,10 @@
+.about
+  &__textline
+    +font(15, 16, 400, $font-family__font--primary)
+    color: $palette__text--primary
+
+    transition: all .3s ease-in-out
+
+    &[href]
+      &:hover
+        color: lighten($palette__text--primary, 20%)

@@ -11,6 +11,8 @@ include ../components/features/features
 include ../components/carousel/carousel
 include ../components/rooms-card/rooms-card
 include ../components/comments-card/comments-card
+include ../components/about/about
+include ../components/socials/socials
 
 block head
   include ../components/page/home-page/variables
@@ -45,6 +47,7 @@ block body
           p.comments-card__textline= comments[comment].textContent
           span.comments-card__signature= comments[comment].author
           span.comments-card__signature= comments[comment].date
+    +about('content', about)
 
   script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
   script(src='js/main.js')

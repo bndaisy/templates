@@ -1,0 +1,38 @@
+.about
+  &__contacts
+    display: grid
+    grid-template-columns: minmax(min-content, max-content)
+    row-gap: 2rem
+    justify-content: start
+
+    background-color: $palette__accent--secondary
+
+    padding: 4rem 0 4rem 3rem
+
+
+@media all and ( min-width: 768px )
+  .about
+    &__contacts
+      justify-content: end
+
+      padding-right: 2rem
+      padding-left: 1rem
+
+
+@media all and ( min-width: 910px )
+  .about
+    &__contacts
+      padding-right: 5rem
+
+
+@media all and ( min-width: 1024px )
+  .about
+    &__contacts
+      padding-right: 7rem
+      padding-left: 3rem
+
+
+@media all and ( min-width: 1280px )
+  .about
+    &__contacts
+      padding-left: 0

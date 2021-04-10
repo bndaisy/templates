@@ -1,0 +1,6 @@
+mixin socials(parent, icons)
+  .socials(class = `${parent}__socials`)
+    - for (let icon in icons)
+      a.socials__link&attributes(icons[icon].attributes)
+        +icon(icons[icon].path, icons[icon].parent, icons[icon].name)
+

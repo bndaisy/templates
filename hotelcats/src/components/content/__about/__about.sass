@@ -1,0 +1,13 @@
+.content
+  &__about
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: repeat(2, minmax(min-content, max-content))
+
+
+
+@media all and ( min-width: 768px )
+  .content
+    &__about
+      display: grid
+      grid-template-columns: 40% auto
