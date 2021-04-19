@@ -1,5 +1,6 @@
 extends ../components/__system/layout/default
 include ../components/header/header
+include ../components/footer/footer
 include ../components/nav/nav
 include ../components/burger-menu/burger-menu
 include ../components/logo/logo
@@ -29,6 +30,7 @@ block body
       +icon('/', 'logo', 'logo')
     +burger-menu('header')
     +nav('header', links)
+
   +content(page)
     +banner('content', banner)
       +button('link', banner.content.button)
@@ -48,6 +50,17 @@ block body
           span.comments-card__signature= comments[comment].author
           span.comments-card__signature= comments[comment].date
     +about('content', about)
+
+  +footer(page)
+    +logo('footer')
+      +icon('/', 'logo', 'logo')
+    +nav('footer', links)
+    section.footer__info
+      .footer__copyright
+        +icon('/', 'footer', 'copyright')
+        = '2021 Все права защищены'
+      a.footer__policy(href = '#') Политика безопасности
+
 
   script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
   script(src='js/main.js')

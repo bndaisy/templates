@@ -1,0 +1,16 @@
+.footer
+  &__info
+    display: flex
+    flex-direction: column
+
+    padding: 1rem
+    border-top: 1px solid $palette__border--primary
+
+
+@media all and ( min-width: 505px )
+  .footer
+    &__info
+      flex-direction: row
+      justify-content: space-between
+
+      grid-column: span 2

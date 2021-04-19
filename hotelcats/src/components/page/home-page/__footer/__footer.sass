@@ -1,0 +1,19 @@
+.home-page
+  &__footer
+    display: grid
+    grid-template-columns: 1fr
+
+    padding: 1rem 0
+
+    width: 100%
+    max-width: 72rem
+
+
+@media all and ( min-width: 600px )
+  .home-page
+    &__footer
+      grid-template-columns: minmax(min-content, max-content) 1fr
+      align-items: center
+
+      padding: 0
+

@@ -14,6 +14,16 @@
       &__link
         +font(16, 24, 400, $font-family__font--secondary)
 
+.footer
+  .nav
+    &__link
+      display: block
+
+      padding: .75rem
+
+      +font(16, 16, 500, $font-family__font--primary)
+      color: $palette__text--primary
+
 
 @media all and ( min-width: 600px )
   .header
@@ -23,9 +33,14 @@
 
         +font(16, 16, 400, $font-family__font--primary)
 
+  .footer
+    .nav
+      &__link
+        padding: 1rem
 
 @media all and (min-width: 1024px)
-  .header
+  .header,
+  .footer
     .nav
       &__link
         transition: all 0.3s ease-in-out
