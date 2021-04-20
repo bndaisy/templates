@@ -1,0 +1,54 @@
+extends ../../components/__system/layout/default
+
+include ../../components/header/header
+include ../../components/content/content
+include ../../components/footer/footer
+
+include ../../components/about/about
+include ../../components/banner/banner
+
+include ../../components/logo/logo
+include ../../components/nav/nav
+include ../../components/burger-menu/burger-menu
+include ../../components/icon/icon
+include ../../components/socials/socials
+include ../../components/button/button
+include ../../components/title/title
+
+include ../../components/rooms-card/rooms-card
+
+
+
+
+block head
+  include ../../components/page/catalog/variables
+
+block styles
+  link(href='../css/main.min.css', rel='stylesheet')
+
+
+block body
+  +header(page)
+    +logo('header', path)
+      +icon('/', 'logo', 'logo')
+    +burger-menu('header')
+    +nav('header', links)
+
+  +content(page)
+    +banner('content', banner)
+      +button('link', banner.content.button)
+    +about('content', about)
+
+  +footer(page)
+    +logo('footer', path)
+      +icon('/', 'logo', 'logo')
+    +nav('footer', links)
+    section.footer__info
+      .footer__copyright
+        +icon('/', 'footer', 'copyright')
+        = '2021 Все права защищены'
+      a.footer__policy(href = '#') Политика безопасности
+
+
+  script(src='js/main.js')
+

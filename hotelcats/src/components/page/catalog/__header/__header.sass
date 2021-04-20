@@ -1,0 +1,14 @@
+.catalog
+  &__header
+    display: grid
+    grid-template-columns: 1fr minmax(min-content, max-content)
+    align-items: center
+
+    max-width: 72rem
+    width: 100%
+
+
+@media all and ( min-width: 768px)
+  .catalog
+    &__header
+      grid-template-columns: minmax(min-content, max-content) 1fr

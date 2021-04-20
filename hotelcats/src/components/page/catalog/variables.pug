@@ -1,0 +1,96 @@
+//- Head
+- const title = `Hotel 'Cats'`;
+- const page = `catalog`;
+- const path = `../`;
+
+
+//- Body
+
+//- Nav
+-
+  const links = [{
+      title: 'Почему мы?',
+      url: '#' },
+    {
+      title: 'Номера',
+      url: 'pages/catalog.html' },
+    {
+      title: 'Отзывы',
+      url: '#' },
+    {
+      title: 'Как нас найти',
+      url: '#' }];
+
+//- Banner
+-
+  const banner = {
+    phone: {
+      path: '/images/banner/catalog',
+      modificator: 'phone',
+      type: 'webp',
+      alt: 'Каждый 7-й день бесплатно' },
+    tablet: {
+      path: '/images/banner/catalog',
+      modificator: 'tablet',
+      type: 'webp',
+      alt: 'Каждый 7-й день бесплатно' },
+    desktop: {
+      path: '/images/banner/catalog',
+      modificator: 'desktop',
+      type: 'webp',
+      alt: 'Каждый 7-й день бесплатно' },
+    content: {
+      headline: 'Каждый 7-й день',
+      textline: 'Акция действует при размещении в номерах “Люкс” и “Супер-Люкс”',
+      button: {
+        parent: 'banner',
+        content: 'Забронировать',
+        icon: {
+          path: '/',
+          name: 'paw-primary',
+          parent: 'banner' }}}};
+
+
+//- About
+-
+  const about = {
+    title: 'Как нас найти',
+    contacts: [{
+        headline: 'Адрес',
+        textline: `Санкт-Петербург, ул. Большая Конюшенная, д. 19`
+      },
+      {
+        headline: 'Режим работы',
+        textline: 'Ежедневно, с 9:00 до 20:00'
+      },
+      {
+        headline: 'Телефон',
+        textline: '8 (800) 333-55-99',
+        attributes: {
+          href : 'tel:+78003335599'}},
+      {
+        headline: 'E-mail',
+        textline: 'info@cat-hotel.ru',
+        attributes: {
+          href: 'mailto:info@cat-hotel.ru' }}],
+    socials: {
+      headline: 'Социальные сети',
+      icons: [{
+          path: '/',
+          parent: 'socials',
+          name: 'fb',
+          attributes: {
+            href: '#' }},
+        {
+          path: '/',
+          parent: 'socials',
+          name: 'ig',
+          attributes: {
+            href: '#' }},
+        {
+          path: '/',
+          parent: 'socials',
+          name: 'vk',
+          attributes: {
+            href: '#' }}]}
+  };

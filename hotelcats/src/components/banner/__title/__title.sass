@@ -17,6 +17,27 @@
 
         +font(12, 14, 400, $font-family__font--primary)
 
+// Поправить
+.catalog
+  .banner
+    &__title
+      position: relative
+
+      +font(24, 36, 700, $font-family__font--secondary)
+      color: $palette__text--primary
+
+      margin-bottom: 4rem
+
+      &::after
+        content: 'бесплатно!'
+
+        position: absolute
+        top: 100%
+        left: 0
+
+        +font(37, 56, 700, $font-family__font--secondary)
+
+
 
 @media all and ( min-width: 600px )
   .home-page
@@ -32,18 +53,3 @@
       &__title
         &::before
           left: 0
-
-
-@media all and ( min-width: 1024px )
-  .home-page
-    .banner
-      &__title
-        position: relative
-
-        color: $palette__text--primary
-
-        &::before
-          content: 'Санкт-Петербург'
-
-          position: absolute
-
