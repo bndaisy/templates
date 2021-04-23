@@ -1,5 +1,3 @@
-include ../icon/icon
-
 mixin button(type, attr)
   - const modifier = attr.modifier && attr.modifier !== '' ? ` button--${attr.modifier}` : '';
   - const isEmpty = (obj) => JSON.stringify(obj) == '{}';

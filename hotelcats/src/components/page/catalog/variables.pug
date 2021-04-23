@@ -21,6 +21,107 @@
       title: 'Как нас найти',
       url: '#' }];
 
+
+//- Filter
+-
+  const filter = {
+    fieldsets: [{
+      title: 'Цена за сутки',
+      icon: {
+        path: path,
+        name: 'ruble',
+        parent: 'filter' },
+      fields: [{ type: 'text' }, { type: 'text' }]},
+      {
+        title: 'Площадь',
+        fields: [{
+            type: 'checkbox',
+            name: '0.63 м2',
+            for: '0.63 м2' },
+          {
+            type: 'checkbox',
+            name: '0.90 м2',
+            for: '0.90 м2' },
+          {
+            type: 'checkbox',
+            name: '1.13 м2',
+            for: '1.13 м2' },
+          {
+            type: 'checkbox',
+            name: '1.56 м2',
+            for: '1.56 м2' },
+          {
+            type: 'checkbox',
+            name: '2.56 м2',
+            for: '2.56 м2'},
+          {
+            type: 'checkbox',
+            name: '2.88 м2',
+            for: '2.88 м2' }]},
+      {
+        title: 'Оснащение номера',
+        fields: [{
+            type: 'checkbox',
+            name: 'Пустой номер',
+            for: 'Пустой номер' },
+          {
+            type: 'checkbox',
+            name: 'Лежак',
+            for: 'Лежак' },
+          {
+            type: 'checkbox',
+            name: 'Когтеточка',
+            for: 'Когтеточка' },
+          {
+            type: 'checkbox',
+            name: 'Игровой комплекс',
+            for: 'Игровой комплекс' },
+          {
+            type: 'checkbox',
+            name: 'Домик',
+            for: 'Домик' }]}],
+    buttons: [{
+        parent: 'filter',
+        content: 'Подобрать',
+        modifier: 'fill'},
+      {
+        parent: 'filter',
+        content: 'Сбросить фильтр',
+        modifier: 'fill-none'}]
+  };
+
+
+//- Sort-toggler
+-
+  const options = [{
+      title: 'По площади',
+      icon: {
+          path: path,
+          name: 'arrow-up',
+          parent: 'sort-toggler' },
+      data: 'square-up' },
+    {
+      title: 'По площади',
+      icon: {
+          path: path,
+          name: 'arrow-down',
+          parent: 'sort-toggler' },
+      data: 'square-down' },
+    {
+      title: 'По цене',
+      icon: {
+          path: path,
+          name: 'arrow-up',
+          parent: 'sort-toggler' },
+      data: 'price-up' },
+    {
+      title: 'По цене',
+      icon: {
+          path: path,
+          parent: 'sort-toggler' },
+      data: 'price-down' }];
+
+
 //- Banner
 -
   const banner = {
@@ -49,7 +150,8 @@
         icon: {
           path: path,
           name: 'paw-primary',
-          parent: 'banner' }}}};
+          parent: 'banner' }}}
+  };
 
 
 //- About

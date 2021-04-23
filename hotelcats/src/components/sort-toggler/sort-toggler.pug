@@ -1,0 +1,6 @@
+mixin sort-toggler(parent, options)
+  .sort-toggler(class = `${parent}__sort-toggler`)
+    - for (let option in options)
+      .sort-toggler__option(data-option = `${options[option].data}`)
+        +icon(options[option].icon.path, options[option].icon.parent, options[option].icon.name)
+        = options[option].title
