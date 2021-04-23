@@ -1,24 +1,39 @@
+.banner
+  &__content
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+
 .home-page
   .banner
     &__content
-      display: flex
-      flex-direction: column
-      align-items: center
-
-      position: absolute
       top: 15%
-      left: 0
-      right: 0
-      bottom: 0
 
 .catalog
   .banner
     &__content
-      position: absolute
-      top: 0
+      padding: 0 1.25rem
+      top: 10%
 
 
-@media all and ( min-width: 769px )
+@media all and ( min-width: 400px  )
+  .catalog
+    .banner
+      &__content
+        justify-content: center
+        align-items: flex-start
+
+        top: 0
+        left: 10%
+        height: 100%
+
+
+@media all and ( min-width: 768px )
   .home-page
     .banner
       &__content
@@ -28,6 +43,13 @@
         top: 0
         left: 15%
         height: 100%
+
+
+@media all and ( min-width: 1024px )
+  .catalog
+    .banner
+      &__content
+        left: 18%
 
 
 @media all and ( min-width: 1440px )

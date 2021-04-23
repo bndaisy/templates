@@ -1,10 +1,13 @@
+.banner
+  &__title
+    position: relative
+
+    color: $palette__text--primary
+
 .home-page
   .banner
     &__title
-      position: relative
-
       +font(44, 62, 700, $font-family__font--secondary)
-      color: $palette__text--primary
 
       margin-bottom: .5rem
 
@@ -17,16 +20,12 @@
 
         +font(12, 14, 400, $font-family__font--primary)
 
-// Поправить
 .catalog
   .banner
     &__title
-      position: relative
-
       +font(24, 36, 700, $font-family__font--secondary)
-      color: $palette__text--primary
 
-      margin-bottom: 4rem
+      margin-bottom: 3.25rem
 
       &::after
         content: 'бесплатно!'
@@ -38,6 +37,12 @@
         +font(37, 56, 700, $font-family__font--secondary)
 
 
+@media all and ( min-width: 550px )
+  .catalog
+    .banner
+      &__title
+        margin-bottom: 3.5rem
+
 
 @media all and ( min-width: 600px )
   .home-page
@@ -46,6 +51,11 @@
         &::before
           left: 27%
 
+  .catalog
+    .banner
+      &__title
+        margin-bottom: 4rem
+
 
 @media all and ( min-width: 769px )
   .home-page
@@ -53,3 +63,17 @@
       &__title
         &::before
           left: 0
+
+
+@media all and ( min-width: 900px )
+  .catalog
+    .banner
+      &__title
+        margin-bottom: 4.25rem
+
+
+@media all and ( min-width: 1280px )
+  .catalog
+    .banner
+      &__title
+        margin-bottom: 4.5rem
