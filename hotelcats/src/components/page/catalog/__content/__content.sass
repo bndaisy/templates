@@ -3,6 +3,7 @@
     display: grid
     row-gap: 4.375rem
     overflow: hidden
+    justify-self: center
     width: 100%
 
 
@@ -15,4 +16,5 @@
 @media all and ( min-width: 1024px )
   .catalog
     &__content
+      grid-template-columns: repeat(2, minmax(min-content, max-content))
       row-gap: 8.75rem

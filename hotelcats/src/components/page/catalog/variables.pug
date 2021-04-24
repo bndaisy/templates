@@ -26,7 +26,7 @@
 -
   const filter = {
     fieldsets: [{
-      title: 'Цена за сутки',
+      title: 'Цена за сутки, ',
       icon: {
         path: path,
         name: 'ruble',
@@ -91,34 +91,35 @@
   };
 
 
-//- Sort-toggler
+//- Sorter
 -
   const options = [{
       title: 'По площади',
       icon: {
           path: path,
           name: 'arrow-up',
-          parent: 'sort-toggler' },
+          parent: 'select' },
       data: 'square-up' },
     {
       title: 'По площади',
       icon: {
           path: path,
           name: 'arrow-down',
-          parent: 'sort-toggler' },
+          parent: 'select' },
       data: 'square-down' },
     {
       title: 'По цене',
       icon: {
           path: path,
           name: 'arrow-up',
-          parent: 'sort-toggler' },
+          parent: 'select' },
       data: 'price-up' },
     {
       title: 'По цене',
       icon: {
           path: path,
-          parent: 'sort-toggler' },
+          name: 'arrow-down',
+          parent: 'select' },
       data: 'price-down' }];
 
 

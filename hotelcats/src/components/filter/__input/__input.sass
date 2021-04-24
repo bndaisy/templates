@@ -1,0 +1,23 @@
+.filter
+  &__input
+    &[type=text]
+      +font(14, 14, 400, $font-family__font--primary)
+
+      max-width: 6.25rem
+      padding: .5rem
+      border: 1px solid $palette__border--secondary
+
+      &:focus
+        outline: none
+        border: 1px solid $palette__accent--secondary
+
+    &[type=checkbox]
+      opacity: 0
+      z-index: 1
+
+      &:checked
+        &+.filter__label
+          &::after
+            background: url('../icons/background/check.svg') center / 1rem  no-repeat
+
+

@@ -1,0 +1,12 @@
+mixin select(parent, options)
+  .select(class = `${parent}__select`)
+    .select__container
+      span.select__current
+        +icon(options[0].icon.path, options[0].icon.parent, options[0].icon.name)
+        = options[0].title
+      +icon(options[0].icon.path, 'select', 'chevron-down')
+    .select__options
+      each option in options
+        .select__option(data-option = `${option.data}`)
+          +icon(option.icon.path, option.icon.parent, option.icon.name)
+          = option.title

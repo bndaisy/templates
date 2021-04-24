@@ -17,7 +17,8 @@ include ../../components/button/button
 include ../../components/title/title
 include ../../components/controls/controls
 include ../../components/filter/filter
-include ../../components/sort-toggler/sort-toggler
+include ../../components/toggler/toggler
+include ../../components/select/select
 
 include ../../components/rooms-card/rooms-card
 
@@ -41,8 +42,10 @@ block body
   +content(page)
     +controls('content')
       h1.content__title Наши номера
-      +filter-toggler('controls')
-      +sort-toggler('controls', options)
+      +toggler('controls')&attributes({'class': 'toggler--filter'})
+        +icon(path, 'toggler', 'filter')
+        |Фильтры
+      +select('controls', options)
     +filter('content', filter.fieldsets)
       - for (let button in filter.buttons)
         +button('button', filter.buttons[button])

@@ -13,11 +13,3 @@ mixin filter(parent, fieldsets)
           if (field.for )
             label.filter__label&attributes({'for' :`${field.for}`})= field.for
     block
-
-
-
-
-mixin filter-toggler(parent)
-  .filter-toggler(class = `${parent}__filter-toggler`)
-    +icon('../', parent, 'filter')
-    |Фильтры

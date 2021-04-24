@@ -1,0 +1,25 @@
+.filter
+  &__label
+    display: flex
+    align-items: center
+
+    position: relative
+
+    height: 1.5rem
+
+    +font(14, 14, 400, $font-family__font--primary)
+
+    &::after
+      content: ''
+      display: block
+
+      position: absolute
+      z-index: 0
+      top: 0
+      left: -36px
+
+      opacity: 1
+
+      width: 1.5rem
+      height: 100%
+      border: 1px solid $palette__border--secondary

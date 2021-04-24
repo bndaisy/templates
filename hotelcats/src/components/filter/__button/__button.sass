@@ -1,0 +1,19 @@
+.filter
+  &__button
+    display: flex
+    justify-content: center
+    align-items: center
+
+    +font(14, 14, 600, $font-family__font--primary)
+    color: $palette__text--primary
+
+    border: 2px solid $palette__accent--secondary
+    border-radius: 1.5rem
+    padding: 1rem
+
+
+@media all and ( min-width: 1024px )
+  .filter
+    &__button
+      &:hover
+        cursor: pointer

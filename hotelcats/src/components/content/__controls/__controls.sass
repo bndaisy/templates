@@ -1,5 +1,26 @@
 .content
   &__controls
+    display: grid
+    grid-template-columns: repeat(2, minmax(min-content, max-content))
+    align-items: center
+    column-gap: 1.5rem
+    row-gap: 2rem
+    justify-self: center
+
     width: 100%
     max-width: 72rem
-    justify-self: center
+    padding: 1rem
+
+
+@media all and (min-width: 660px)
+  .content
+    &__controls
+      grid-template-columns: 1fr repeat(2, minmax(min-content, max-content))
+
+
+@media all and ( min-width: 1024px )
+  .content
+    &__controls
+      grid-template-columns: 1fr minmax(min-content, max-content)
+      grid-column: span 2
+

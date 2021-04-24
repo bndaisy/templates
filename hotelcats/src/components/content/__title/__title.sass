@@ -1,3 +1,10 @@
 .content
   &__title
     +font(28, 36, 700, $font-family__font--secondary)
+    grid-column: span 2
+
+
+@media all and (min-width: 660px)
+  .content
+    &__title
+      grid-column: 1

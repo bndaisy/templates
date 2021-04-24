@@ -1,0 +1,17 @@
+.controls
+  &__toggler
+    display: flex
+    justify-content: center
+    align-items: center
+
+    +font(14, 14, 500, $font-family__font--primary)
+
+    padding: .75rem 1.25rem
+    border-radius: 1.5rem
+    box-shadow: 0 0 1.5rem rgba($palette__shadow--secondary, 0.15)
+
+
+@media all and ( min-width: 1024px )
+  .controls
+    &__toggler
+      display: none
