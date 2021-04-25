@@ -1,0 +1,25 @@
+.goods
+  &__filter
+    position: absolute
+    z-index: 1
+    top: 0
+    left: 0
+
+    display: none
+
+    height: 100%
+    width: 100%
+
+    background-color: rgba($palette__background--primary, .25)
+    backdrop-filter: blur(8px)
+
+
+@media all and ( min-width: 1024px )
+  .goods
+    &__filter
+      position: static
+
+      display: block
+
+      background-color: transparent
+

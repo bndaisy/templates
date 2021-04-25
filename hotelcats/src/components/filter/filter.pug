@@ -1,15 +1,16 @@
 mixin filter(parent, fieldsets)
-  form.filter(class = `${parent}__filter`)
+  section.filter(class = `${parent}__filter`)
+    form.filter__form
 
-    each fieldset in fieldsets
-      .filter__fieldset
-        if (fieldset.title)
-          h2.filter__title= fieldset.title
-            if (fieldset.icon)
-              +icon(fieldset.icon.path, fieldset.icon.parent, fieldset.icon.name)
+      each fieldset in fieldsets
+        .filter__fieldset
+          if (fieldset.title)
+            h2.filter__title= fieldset.title
+              if (fieldset.icon)
+                +icon(fieldset.icon.path, fieldset.icon.parent, fieldset.icon.name)
 
-        each field in fieldset.fields
-          input.filter__input&attributes({'type': `${field.type}`, 'name': `${field.name}`})
-          if (field.for )
-            label.filter__label&attributes({'for' :`${field.for}`})= field.for
-    block
+          each field in fieldset.fields
+            input.filter__input&attributes({'type': `${field.type}`, 'name': `${field.name}`})
+            if (field.for )
+              label.filter__label&attributes({'for' :`${field.for}`})= field.for
+      block

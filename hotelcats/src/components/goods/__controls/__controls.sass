@@ -1,26 +1,28 @@
-.content
+.goods
   &__controls
     display: grid
     grid-template-columns: repeat(2, minmax(min-content, max-content))
-    align-items: center
-    column-gap: 1.5rem
-    row-gap: 2rem
-    justify-self: center
+    grid-column: span 2
+    column-gap: 1rem
+    row-gap: 1.5rem
 
-    width: 100%
-    max-width: 72rem
-    padding: 1rem
+    padding: 1rem 0
 
 
-@media all and (min-width: 660px)
-  .content
+@media all and ( min-width: 368px )
+  .goods
+    &__controls
+      column-gap: 1.5rem
+
+
+@media all and ( min-width: 660px )
+  .goods
     &__controls
       grid-template-columns: 1fr repeat(2, minmax(min-content, max-content))
+      row-gap: 0
 
 
 @media all and ( min-width: 1024px )
-  .content
+  .goods
     &__controls
       grid-template-columns: 1fr minmax(min-content, max-content)
-      grid-column: span 2
-

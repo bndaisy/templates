@@ -4,7 +4,7 @@ include ../../components/header/header
 include ../../components/content/content
 include ../../components/footer/footer
 
-include ../../components/controls/controls
+include ../../components/goods/goods
 include ../../components/about/about
 include ../../components/banner/banner
 
@@ -15,7 +15,6 @@ include ../../components/icon/icon
 include ../../components/socials/socials
 include ../../components/button/button
 include ../../components/title/title
-include ../../components/controls/controls
 include ../../components/filter/filter
 include ../../components/toggler/toggler
 include ../../components/select/select
@@ -40,15 +39,18 @@ block body
     +nav('header', links)
 
   +content(page)
-    +controls('content')
-      h1.content__title Наши номера
-      +toggler('controls')&attributes({'class': 'toggler--filter'})
-        +icon(path, 'toggler', 'filter')
-        |Фильтры
-      +select('controls', options)
-    +filter('content', filter.fieldsets)
-      - for (let button in filter.buttons)
-        +button('button', filter.buttons[button])
+    +goods('content')
+      section.goods__controls
+        h1.goods__title Наши номера
+        +toggler('goods')&attributes({'class': 'toggler--filter'})
+          +icon(path, 'toggler', 'filter')
+          |Фильтры
+        +select('goods', options)
+      +filter('goods', filter.fieldsets)
+        - for (let button in filter.buttons)
+          +button('button', filter.buttons[button])
+        .filter__close
+          +icon(path, 'filter', 'close')
     +banner('content', banner)
       +button('link', banner.content.button)
     +about('content', about)

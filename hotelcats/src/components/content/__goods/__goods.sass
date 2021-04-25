@@ -1,0 +1,22 @@
+.content
+  &__goods
+    display: grid
+    grid-template-columns: minmax(min-content, max-content)
+    align-items: center
+    column-gap: 1.5rem
+    row-gap: 2rem
+    justify-self: center
+
+    width: 100%
+    max-width: 72rem
+    padding: 1rem
+
+
+@media all and ( min-width: 1024px )
+  .content
+    &__goods
+      grid-template-columns: minmax(min-content, max-content) 1fr
+      row-gap: 3rem
+
+      padding: 3rem 1rem
+

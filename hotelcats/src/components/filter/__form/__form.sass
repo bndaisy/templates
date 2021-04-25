@@ -1,0 +1,25 @@
+.filter
+  &__form
+    position: relative
+
+    display: grid
+    row-gap: 1rem
+
+    max-width: 290px
+    width: 100%
+
+    padding: 3rem 1.5rem
+    margin: 7.5rem auto
+    border-radius: .5rem
+
+    background-color: $palette__background--primary
+    box-shadow: .25rem .25rem 1rem rgba($palette__shadow--foreground, .25)
+
+
+@media all and ( min-width: 1024px )
+  .filter
+    &__form
+      padding: 0
+      margin: 0
+
+      box-shadow: none
