@@ -7,9 +7,9 @@ import toggleBurger from '../components/burger-menu/burger-menu';
 
 // Activate brg-menu
 
-const toggler = document.querySelector('.burger-menu');
+const brgmenu = document.querySelector('.burger-menu');
 const nav = document.querySelector('.header__nav');
-const header = toggler.parentElement;
+const header = brgmenu.parentElement;
 
 const socials = [
   {
@@ -42,15 +42,15 @@ const phones = [
 ];
 
 
-export default toggler.addEventListener('click', ({ target }) => {
-  toggleBurger(toggler, nav);
+export default brgmenu.addEventListener('click', ({ target }) => {
+  toggleBurger(brgmenu, nav);
   recolorNavigation(
     target,
     variables.palette['palette__accent--secondary'],
     header,
     nav);
 
-  if (toggler.classList.contains('is-active')) {
+  if (brgmenu.classList.contains('is-active')) {
     document.body.style.overflow = 'hidden';
 
     navigation.renderingDynamicNavigationElement(nav.firstElementChild, phones);
@@ -63,7 +63,10 @@ export default toggler.addEventListener('click', ({ target }) => {
 });
 
 const recolorNavigation = (target, color, ...elems) => {
-  elems.forEach(elem => elem.style.backgroundColor = target.classList.contains('is-active') || target.parentElement.classList.contains('is-active') ? color : variables.palette['palette__background--primary'])
+  elems.forEach(elem => elem.style.backgroundColor = target.classList.contains('is-active') ||
+    target.parentElement.classList.contains('is-active') ?
+    color :
+    variables.palette['palette__background--primary'])
 };
 
 const deleteElements = (parentElement, subString) => {
