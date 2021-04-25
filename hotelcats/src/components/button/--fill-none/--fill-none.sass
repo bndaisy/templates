@@ -2,3 +2,12 @@
   .button
     &--fill-none
       background-color: transparent
+
+
+@media all and ( min-width: 1024px  )
+  .filter
+    .button
+      &--fill-none
+        transition: all .3s ease-in-out
+        &:hover
+          background-color: $palette__accent--secondary

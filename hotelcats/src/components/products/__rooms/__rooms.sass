@@ -1,0 +1,17 @@
+.products
+  &__rooms
+    display: grid
+    grid-template-columns: minmax(min-content, max-content)
+
+
+@media all and ( min-width: 768px )
+  .products
+    &__rooms
+      grid-template-columns: repeat(2, minmax(min-content, max-content))
+
+
+@media all and ( min-width: 1024px )
+  .products
+    &__rooms
+      grid-template-columns: repeat(3, minmax(min-content, max-content))
+      grid-gap: 2rem

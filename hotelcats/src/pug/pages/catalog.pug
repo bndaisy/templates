@@ -4,7 +4,7 @@ include ../../components/header/header
 include ../../components/content/content
 include ../../components/footer/footer
 
-include ../../components/goods/goods
+include ../../components/products/products
 include ../../components/about/about
 include ../../components/banner/banner
 
@@ -39,18 +39,25 @@ block body
     +nav('header', links)
 
   +content(page)
-    +goods('content')
-      section.goods__controls
-        h1.goods__title Наши номера
-        +toggler('goods')&attributes({'class': 'toggler--filter'})
+    +products('content')
+      section.products__controls
+        h1.products__title Наши номера
+        +toggler('products')&attributes({'class': 'toggler--filter'})
           +icon(path, 'toggler', 'filter')
           |Фильтры
-        +select('goods', options)
-      +filter('goods', filter.fieldsets)
+        +select('products', options)
+      +filter('products', filter.fieldsets)
         - for (let button in filter.buttons)
           +button('button', filter.buttons[button])
         .filter__close
           +icon(path, 'filter', 'close')
+      .products__rooms
+        each room in rooms
+          +rooms-card('products', room.img, room.button)
+            h3.rooms-card__headline= room.content.headline
+            ul.rooms-card__list
+              each item in room.content.list
+                li.rooms-card__textline= item
     +banner('content', banner)
       +button('link', banner.content.button)
     +about('content', about)

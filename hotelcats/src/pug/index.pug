@@ -44,19 +44,19 @@ block body
       +button('link', banner.content.button)
     +features('content', 'Почему мы?', features)
     +carousel(carousel.rooms, carousel.togglers)
-      - for (let room in rooms)
-        +rooms-card('carousel', rooms[room].img, rooms[room].button)&attributes({ 'class': ' swiper-slide' })
-          h3.rooms-card__headline= rooms[room].content.headline
+      each room in rooms
+        +rooms-card('carousel', room.img, room.button)&attributes({ 'class': ' swiper-slide' })
+          h3.rooms-card__headline= room.content.headline
           ul.rooms-card__list
-            - for (let i in rooms[room].content.list)
-              li.rooms-card__textline= rooms[room].content.list[i]
+            each item in room.content.list
+              li.rooms-card__textline= item
     +carousel(carousel.comments, carousel.togglers)
-      - for (let comment in comments)
+      each comment in comments
         +comments-card('carousel')&attributes({ 'class': ' swiper-slide' })
           +icon('/', 'comments-card', 'quotes')
-          p.comments-card__textline= comments[comment].textContent
-          span.comments-card__signature= comments[comment].author
-          span.comments-card__signature= comments[comment].date
+          p.comments-card__textline= comment.textContent
+          span.comments-card__signature= comment.author
+          span.comments-card__signature= comment.date
     +about('content', about)
 
   +footer(page)

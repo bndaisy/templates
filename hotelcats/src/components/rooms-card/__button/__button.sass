@@ -2,7 +2,6 @@
   &__button
     display: flex
     align-items: center
-    justify-self: start
 
     border: none
     border-radius: 1.5rem
@@ -12,12 +11,24 @@
     color: $palette__text--foreground
     background-color: $palette__accent--primary
 
-
-@media all and (min-width: 1024px)
+.carousel
   .rooms-card
     &__button
-      transition: all .3s ease-in-out
+      justify-self: center
 
-      &:hover
-          cursor: pointer
-          background-color: $palette__accent--secondary
+@media all and ( min-width: 600px )
+  .carousel
+    .rooms-card
+      &__button
+        justify-self: start
+
+
+@media all and (min-width: 1024px)
+  .carousel
+    .rooms-card
+      &__button
+        transition: all .3s ease-in-out
+
+        &:hover
+            cursor: pointer
+            background-color: $palette__accent--secondary

@@ -1,6 +1,6 @@
 mixin rooms-card(parent, image, button)
   .rooms-card(class = `${parent}__rooms-card${attributes.class ? attributes.class : ''}`)
-    img.rooms-card__img(src = `${image.path}images/rooms/rooms-card__img--${image.modifier}${image.type}` alt = `${image.alt}`)
+    img.rooms-card__img(src = `${image.path}/rooms-card__img--${image.modifier}${image.type}` alt = `${image.alt}`)
     .rooms-card__content
       block
       +button('button', button)
