@@ -1,17 +1,34 @@
 .products
   &__rooms
     display: grid
-    grid-template-columns: minmax(min-content, max-content)
+    grid-template-columns: 1fr
+    justify-self: center
+    justify-items: center
+    row-gap: 2rem
+    width: 100%
 
 
-@media all and ( min-width: 768px )
+@media all and ( min-width: 600px )
   .products
     &__rooms
-      grid-template-columns: repeat(2, minmax(min-content, max-content))
+      grid-template-columns: repeat(2, 1fr)
+      column-gap: 2rem
+
+
+@media all and ( min-width: 900px )
+  .products
+    &__rooms
+      grid-template-columns: repeat(3, 1fr)
+      grid-gap: 2rem
 
 
 @media all and ( min-width: 1024px )
   .products
     &__rooms
-      grid-template-columns: repeat(3, minmax(min-content, max-content))
-      grid-gap: 2rem
+      grid-template-columns: repeat(2, 1fr)
+
+
+@media all and ( min-width: 1200px )
+  .products
+    &__rooms
+      grid-template-columns: repeat(3, 1fr)

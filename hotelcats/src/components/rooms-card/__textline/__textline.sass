@@ -1,12 +1,9 @@
-.rooms-card
-  &__textline
-    &:not(:last-child)
-      margin-bottom: 1rem
-
 .products
   .rooms-card
     &__textline
       +font(14, 14, 400, $font-family__font--primary, 1)
+      &:not(:last-child)
+        margin-bottom: .75rem
 
 .carousel
   .rooms-card
@@ -30,3 +27,6 @@
         border-radius: 50%
 
         background-color: $palette__accent--secondary
+
+      &:not(:last-child)
+        margin-bottom: 1rem

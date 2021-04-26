@@ -1,6 +1,7 @@
 .rooms-card
   &__button
-    display: flex
+    display: grid
+    grid-template-columns: 1fr minmax(min-content, max-content)
     align-items: center
 
     border: none
@@ -11,10 +12,6 @@
     color: $palette__text--foreground
     background-color: $palette__accent--primary
 
-.carousel
-  .rooms-card
-    &__button
-      justify-self: center
 
 @media all and ( min-width: 600px )
   .carousel
