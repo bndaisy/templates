@@ -3,7 +3,6 @@
     +font(14, 20, 500, 22px)
     color: $palette__text--primary
 
-    max-width: 47rem
     width: 100%
     text-align: center
 
@@ -11,11 +10,33 @@
       margin-bottom: 2rem
 
 
+@media all and ( min-width: 600px )
+  .banner
+    &__textline
+      max-width: 38rem
+
+
 @media all and ( min-width: 768px )
   .banner
     &__textline
       +font(14, 20, 500, 26px)
+
+      max-width: 40rem
+
       &:not(:first-of-type)
         margin-bottom: 2.5rem
+
+
+@media all and ( min-width: 1024px )
+  .banner
+    &__texline
+      max-width: 43rem
+
+
+@media all and ( min-width: 1280px )
+  .banner
+    &__textline
+      max-width: 45rem
+
 
 @import '--accent/--accent'

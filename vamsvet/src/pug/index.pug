@@ -1,6 +1,8 @@
 extends ../components/__system/layout/default
 include ../components/header/header
 include ../components/banner/banner
+include ../components/animation/animation
+
 include ../components/nav/nav
 include ../components/icon/icon
 include ../components/burger-menu/burger-menu
@@ -28,6 +30,5 @@ block body
   +banner(page, banner)
     p.banner__textline С #[span.banner__textline--accent ВамСвет.Дизайн] ваша работа станет проще, а доход — выше.
     +button('banner', banner.content.button)
-
 
   script(src='js/main.js')
