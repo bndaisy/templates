@@ -4,16 +4,27 @@
     color: $palette__text--primary
     text-transform: uppercase
 
-    padding: 1.25rem 3rem
+    padding: 1rem 2rem
     background-color: $palette__accent--primary
     border-radius: .5rem
     border: none
+
+    box-shadow: 0 0 1rem rgba($palette__accent--primary, .7)
+
+
+@media all and ( min-width: 360px )
+  .banner
+    &__button
+      padding: 1.25rem 3rem
 
 
 @media all and ( min-width: 1024px )
   .banner
     &__button
+      box-shadow: none
+
       transition: $transition__speed--medium
+
       &:hover
         cursor: pointer
         box-shadow: 0 0 1rem rgba($palette__accent--primary, .7)

@@ -1,9 +1,21 @@
 .banner
   &__textline
-    +font(14, 20, 500)
+    +font(14, 20, 500, 22px)
     color: $palette__text--primary
 
-    max-width: 769px
+    max-width: 47rem
+    width: 100%
     text-align: center
 
-    margin-bottom: 3rem
+    &:not(:first-of-type)
+      margin-bottom: 2rem
+
+
+@media all and ( min-width: 768px )
+  .banner
+    &__textline
+      +font(14, 20, 500, 26px)
+      &:not(:first-of-type)
+        margin-bottom: 2.5rem
+
+@import '--accent/--accent'

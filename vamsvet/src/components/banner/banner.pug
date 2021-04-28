@@ -1,6 +1,9 @@
-mixin banner(parent, { phone, tablet, desktop, content })
+mixin banner(parent, { phone, desktop, content })
   article.banner(class = `${parent}__banner`)
-    img.banner__img(src=`${desktop.path}/banner__img--${desktop.modifier}.${desktop.type}` alt=`${desktop.alt}`)
+    picture
+      source(srcset=`${phone.path}/banner__img--${phone.modifier}.${phone.type}`, media='(max-width: 475px)')
+      source(srcset=`${desktop.path}/banner__img--${desktop.modifier}.${desktop.type}`, media='(min-width: 476px)')
+      img.banner__img(src=`${desktop.path}/banner__img--${desktop.modifier}.${desktop.type}` alt=`${desktop.alt}`)
     .banner__content
       h2.banner__title= content.headline
       p.banner__textline= content.textline

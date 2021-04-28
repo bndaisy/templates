@@ -1,14 +1,21 @@
 .banner
   &__content
     position: absolute
-    bottom: 2rem
+    top: 65%
     left: 0
+    z-index: 1
 
     display: flex
     flex-direction: column
     align-items: center
-
-    width: 100%
     justify-content: center
 
+    width: 100%
+    padding: 0 2rem
+
+
+@media all and ( min-width: 476px )
+  .banner
+    &__content
+      top: 57%
 
