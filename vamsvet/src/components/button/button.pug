@@ -1,0 +1,7 @@
+mixin button(parent, button)
+  - const isEmpty = (obj) => JSON.stringify(obj) == '{}';
+
+  button.button(class = `${parent}__button`)&attributes({'class': button.modifier ? `button--${modifier}` : ''})
+    if button.icon && !isEmpty(button.icon)
+      +icon(button.icon.path, button.icon.parent, button.icon.name)
+    = button.content

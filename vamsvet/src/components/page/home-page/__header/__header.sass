@@ -1,0 +1,19 @@
+.home-page
+  &__header
+    position: relative
+    display: grid
+
+    background-color: $palette__background--primary
+    width: 100%
+
+
+@media all and ( min-width: 1024px )
+  .home-page
+    &__header
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 1
+
+      background-color: rgba($palette__background--primary, .7)
+

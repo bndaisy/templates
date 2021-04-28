@@ -1,0 +1,8 @@
+=font($font-size-min, $font-size-max, $font-weight, $line-height: normal, $letter-spacing: normal)
+  $font-size-step: $font-size-max - $font-size-min
+  $font-size: calc(#{ $font-size-min + px } + #{ $font-size-step } * (100vw - 320px) / (1920 - 320))
+
+  font-size: $font-size
+  font-weight: $font-weight
+  line-height: $line-height
+  letter-spacing: $letter-spacing

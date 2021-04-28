@@ -1,0 +1,68 @@
+.nav
+  &__link
+    display: block
+
+    +font(20, 20, 700)
+    color: $palette__text--primary
+    text-transform: uppercase
+
+    padding: 1rem 0
+
+
+@media all and ( min-width: 1024px )
+  .nav--contacts
+    .nav
+      &__link
+        +font(14, 14, 700)
+
+  .nav--navigation
+    .nav
+      &__link
+        +font(14, 14, 500)
+        color: $palette__text--secondary
+
+        padding: 1rem .5rem
+
+        transition: $transition__speed--medium
+
+        &:hover
+          color: $palette__accent--secondary
+
+  .nav__item
+    .nav__link
+      transition: $transition__speed--medium
+
+  .nav__item
+    &--primary,
+    &--secondary
+      .nav__link
+        padding: 0.25rem 0
+
+    &--primary
+      .nav__link
+        color: $palette__accent--primary
+
+        &:hover
+          color: darken($palette__accent--primary, 15%)
+
+    &--secondary
+      .nav__link
+        color: $palette__accent--another
+
+        &:hover
+          color: darken($palette__accent--another, 15%)
+
+    &--base
+      .nav__link
+        color: $palette__text--primary
+        padding: 1rem 1.25rem
+
+        &:hover
+          color: darken($palette__text--primary, 15%)
+
+
+@media all and ( min-width: 1440px )
+  .nav--navigation
+    .nav
+      &__link
+        padding: 1rem

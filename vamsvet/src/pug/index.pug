@@ -1,0 +1,32 @@
+extends ../components/__system/layout/default
+include ../components/header/header
+include ../components/banner/banner
+include ../components/nav/nav
+include ../components/icon/icon
+include ../components/burger-menu/burger-menu
+include ../components/contacts-menu/contacts-menu
+include ../components/button/button
+
+include ../components/logo/logo
+
+block head
+  include ../components/page/home-page/variables
+
+block styles
+  link(rel="stylesheet", href="css/main.min.css")
+
+block body
+  +header(page)
+    +contacts-menu('header', header.contacts[1].url)
+    +logo('header', path)
+      +icon('/', 'header', 'logo')
+    +burger-menu('header')
+    .nav__wrapper
+      +nav('header', header.contacts)&attributes({'class': 'nav--contacts'})
+      +nav('header', header.navigation)&attributes({'class': 'nav--navigation'})
+    +button('header', header.button)
+  +banner(page, banner)
+    +button('banner', banner.content.button)
+
+
+  script(src='js/main.js')

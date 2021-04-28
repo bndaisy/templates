@@ -1,0 +1,62 @@
+//- Head
+- let title = `Home-page`;
+- let page = `home-page`;
+- let path = `./`;
+
+
+//- Body
+
+//- Header
+-
+  const header = {
+    contacts: [{
+        title: 'Интернет магазин',
+        url: '#',
+        modifier: 'secondary' },
+      {
+        title: '8 (495) 669-10-30',
+        url: 'tel:+78003335599',
+        modifier: 'base' },
+      {
+        title: 'Магазин в москве',
+        url: '#',
+        modifier: 'primary' }],
+    navigation: [{
+        title: 'Наши решения',
+        url: '#' },
+      {
+        title: 'Преимущества',
+        url: `#` },
+      {
+        title: 'Проекты дизайнеров',
+        url: '#' },
+      {
+        title: 'Как работаем',
+        url: '#' },
+      {
+        title: 'Контакты',
+        url: '#' }],
+    button: {
+      parent: 'header',
+      content: 'Войти',
+      icon: {
+        path: path,
+        name: 'user',
+        parent: 'header' }}
+  };
+
+
+//- Banner
+-
+  const banner = {
+    desktop: {
+        path: '/images/banner',
+        modifier: 'desktop',
+        type: 'webp',
+        alt: 'Котейка. Уютная гостиница для котов и кошек' },
+    content: {
+        headline: 'Для дизайнеров',
+        textline: 'Добро пожаловать в команду «ВамСвет»! С нами, вы можете забыть о сроках поставки, документообороте, постоянных подборках товаров. С ВамСвет.Дизайн ваша работа станет проще, а доход — выше.',
+        button: {
+          parent: 'banner',
+          content: 'Начните сейчас'}}};

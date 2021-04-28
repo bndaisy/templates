@@ -1,0 +1,26 @@
+.header
+  &__button
+    display: none
+    grid-template-columns: repeat(2, minmax(min-content, max-content))
+    column-gap: .75rem
+    align-items: center
+
+    +font(14, 14, 500)
+    color: $palette__text--primary
+
+    padding: 0.5rem 0.75rem
+    background-color: $palette__accent--primary
+    border: none
+    border-radius: .5rem
+
+
+@media all and ( min-width: 1024px )
+  .header
+    &__button
+      display: grid
+
+      transition: $transition__speed--medium
+      &:hover
+        cursor: pointer
+        box-shadow: 0 0 1rem rgba($palette__accent--primary, .7)
+

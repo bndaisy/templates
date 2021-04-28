@@ -1,0 +1,6 @@
+mixin nav(parent, links)
+  nav.nav(class = `${parent}__nav`)&attributes(attributes)
+    ul.nav__list
+      each link in links
+        li.nav__item&attributes({'class': link.modifier ? `nav__item--${link.modifier}` : ''})
+          a.nav__link(href = `${link.url}`)= link.title
