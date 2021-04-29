@@ -22,11 +22,12 @@ header.addEventListener('click', ({ target }) => {
   enableNavigation(target);
 
   if (target.closest('.header__button')) showPopUp(popup);
-
   if (popup.classList.contains('is-active')) document.body.style.overflow = 'hidden';
-  else document.body.style.overflow = 'visible';
 });
 
 page.addEventListener('click', ({ target }) => {
-  if (target.classList.contains('popup') || target.closest('.popup__close')) hidePopUp(popup);
+  if (target.classList.contains('popup') || target.closest('.popup__close')) {
+    hidePopUp(popup);
+    document.body.style.overflow = 'visible';
+  }
 });
