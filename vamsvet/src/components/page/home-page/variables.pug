@@ -42,8 +42,7 @@
       icon: {
         path: path,
         name: 'user',
-        parent: 'header' }}
-  };
+        parent: 'header' }}};
 
 
 //- Banner
@@ -86,7 +85,7 @@
             modifier: 'solution',
             icon: {
                 path: path,
-                name: 'check',
+                name: 'circle-check',
                 parent: 'solution' }}},
       image: {
           path: '/images/solutions',
@@ -109,7 +108,7 @@
             modifier: 'solution',
             icon: {
                 path: path,
-                name: 'check',
+                name: 'circle-check',
                 parent: 'solution' }}},
       image: {
           path: '/images/solutions',
@@ -132,10 +131,44 @@
             modifier: 'solution',
             icon: {
                 path: path,
-                name: 'check',
+                name: 'circle-check',
                 parent: 'solution' }}},
       image: {
           path: '/images/solutions',
           modifier: 'waiting-thing',
           type: 'webp',
           alt: 'Долгая обратная связь по вопросам, проблемам и их решениям.' }}];
+
+
+-
+  const register = {
+      modifier: 'register',
+      fields: [{
+          type: 'text',
+          name: 'username',
+          for: 'username',
+          label: 'Имя' },
+        {
+          type: 'tel',
+          name: 'phone',
+          for: 'phone',
+          label: 'Телефон' },
+        {
+          type: 'password',
+          name: 'password',
+          for: 'password',
+          label: 'Введите пароль' },
+        {
+          type: 'text',
+          name: 'verification',
+          for: 'verification',
+          label: 'Подтвердите пароль' },
+        {
+          type: 'checkbox',
+          name: 'agreement',
+          for: 'agreement',
+          label: 'Я ознакомился и принимаю условия “Политики конфиденциальности” и “Информированного согласия”'}],
+      button: {
+        parent: 'popup',
+        content: 'Зарегистрироваться'}
+    }

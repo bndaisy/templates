@@ -1,0 +1,15 @@
+.popup
+  &__close
+    position: absolute
+    top: 1.5rem
+    right: 1.5rem
+
+
+@media all and ( min-width: 1024px )
+  .popup
+    &__close
+      transition: $transition__speed--medium
+      &:hover
+        cursor: pointer
+        .icon--close
+          filter: drop-shadow(0 0 3px $palette__icon--accent)

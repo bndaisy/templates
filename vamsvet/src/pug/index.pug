@@ -10,10 +10,11 @@ include ../components/solutions/solutions
 
 include ../components/logo/logo
 include ../components/icon/icon
+include ../components/burger-menu/burger-menu
 include ../components/button/button
 
 include ../components/nav/nav
-include ../components/burger-menu/burger-menu
+include ../components/popup/popup
 
 
 block head
@@ -38,5 +39,9 @@ block body
       p.banner__textline С #[span.banner__textline--accent ВамСвет.Дизайн] ваша работа станет проще, а доход — выше.
       +button('banner', banner.content.button)
     +solutions('content', solutions)
+  +popup(page, register)
+    +button('popup', register.button)
+    .popup__close
+      +icon(path, 'popup', 'close')
 
   script(src='js/main.js')
