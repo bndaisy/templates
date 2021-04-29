@@ -1,9 +1,11 @@
 import brgmenu from '../components/burger-menu/burger-menu';
-import { showPopUp, hidePopUp } from '../components/popup/popup';
+import '../components/popup/popup';
 
+const page = document.querySelector('.home-page');
 const header = document.querySelector('.header');
+const popup = document.querySelector('.popup');
 
-function enableNavigation({ target }) {
+function enableNavigation(target) {
   const navigation = document.querySelector('.nav__wrapper');
   const toggler = document.querySelector('.burger-menu');
 
@@ -13,17 +15,18 @@ function enableNavigation({ target }) {
   else document.body.style.overflow = 'visible';
 }
 
-function enablePopUp({ target }) {
-  const popup = document.querySelector('.popup');
+const showPopUp = (element) => element.classList.add('is-active');
+const hidePopUp = (element) => element.classList.remove('is-active');
+
+header.addEventListener('click', ({ target }) => {
+  enableNavigation(target);
 
   if (target.closest('.header__button')) showPopUp(popup);
-  if (target.classList.contains('popup') || target.closest('.popup__close')) hidePopUp(popup);
 
   if (popup.classList.contains('is-active')) document.body.style.overflow = 'hidden';
   else document.body.style.overflow = 'visible';
-}
+});
 
-header.addEventListener('click', function (event) {
-  enableNavigation(event);
-  enablePopUp(event);
+page.addEventListener('click', ({ target }) => {
+  if (target.classList.contains('popup') || target.closest('.popup__close')) hidePopUp(popup);
 });
