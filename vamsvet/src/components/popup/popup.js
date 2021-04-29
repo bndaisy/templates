@@ -1,13 +1,16 @@
-// const content = document.querySelector('.content');
+function enablePopUp(popup) {
+  popup.classList.add('is-active');
 
-// const showPopUp = (popup) => popup.classList.add('is-active');
-// const hidePopUp = (popup) => popup.classList.remove('is-active');
+  document.body.style.overflow = 'hidden';
+}
 
-// export content.addEventListener('click', function (event) {
-//   const popup = document.querySelector('.popup');
-//   const { target } = event;
+function disablePopUp(popup) {
+  popup.classList.remove('is-active');
 
-//   if (target.closest('.toggler--filter')) showPopUp(popup);
-//   if (target.classList.contains('popup') || target.closest('.popup__close')) hidePopUp(popup);
+  document.body.style.overflow = 'visible';
+}
 
-// });
+export default {
+  enablePopUp,
+  disablePopUp,
+};

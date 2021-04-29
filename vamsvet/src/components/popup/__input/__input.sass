@@ -1,15 +1,14 @@
 .popup
   &__input
-    &[type=text],
-    &[type=password],
-    &[type=tel]
-      +font(20, 20, 400, 24px)
+    &:not([type=checkbox])
+      +font(16, 20, 400, 24px)
       color: $palette__input--text
 
-      padding: 1.5rem 1.125rem 1.125rem
+      padding: 1.25rem 1rem 1rem
       border: none
       border-radius: .25rem
-      width: 18.75rem
+      width: 100%
+
       background: rgba($palette__input--background-secondary, .1)
 
       transition: $transition__speed--medium
@@ -22,7 +21,7 @@
         &+.popup__label
           +font(12, 12, 500, 15px)
           color: $palette__label--active
-          top: .75rem
+          top: .5rem
 
     &[type=checkbox]
       position: relative
@@ -32,6 +31,18 @@
       &:checked
         &+.popup__label
           &::before
-            background: $palette__accent--primary url('../icons/background/check.svg') center / 1rem  no-repeat
+            background: $palette__accent--primary url('../icons/background/check.svg') center / .75rem  no-repeat
 
+
+@media all and ( min-width: 360px )
+  .popup
+    &__input
+      &[type=text],
+      &[type=password],
+      &[type=tel]
+        padding: 1.5rem 1.125rem 1.125rem
+
+        &:focus
+          &+.popup__label
+            top: .75rem
 

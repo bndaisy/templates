@@ -1,5 +1,5 @@
-.nav
-  &__wrapper
+.header
+  &__inner
     position: absolute
     top: 0
     left: 0
@@ -13,10 +13,14 @@
 
     padding: 4rem 2rem
 
+    &.is-active
+      display: flex
+      flex-direction: column
+
 
 @media all and (min-width: 1024px)
-  .nav
-    &__wrapper
+  .header
+    &__inner
       position: static
 
       display: grid
@@ -28,10 +32,7 @@
 
 
 @media all and (min-width: 1366px)
-  .nav
-    &__wrapper
+  .header
+    &__inner
       grid-template-columns: repeat(2, minmax(min-content, max-content))
       justify-content: space-between
-
-@import 'is-active/is-active'
-

@@ -1,20 +1,37 @@
-.popup--register
+.popup
+  &__form
+    position: relative
+
+    display: grid
+    grid-template-columns: minmax(min-content, 22rem)
+    grid-auto-rows: auto
+    justify-items: center
+    justify-self: center
+    align-self: start
+    row-gap: 1.75rem
+
+    padding: 3rem 1.75rem
+    margin: 6rem .5rem 0
+
+    background: $palette__background--primary
+    box-shadow: 0 0 1.5rem rgba($palette__accent--primary, .25)
+    border-radius: .5rem
+
+
+@media all and ( min-width: 360px )
   .popup
     &__form
-      position: relative
+      padding: 3rem 2rem
+      margin: 6rem 1rem 0
 
-      display: grid
-      grid-auto-rows: auto
-      justify-self: center
-      justify-items: center
-      row-gap: 1.75rem
 
+@media all and ( min-width: 420px )
+  .popup
+    &__form
       padding: 4rem
-      margin: 0 1rem
-      max-width: 32rem
-      max-height: 47.5rem
-      width: 100%
 
-      background: $palette__background--primary
-      box-shadow: 0 0 1.5rem rgba($palette__accent--primary, .25)
-      border-radius: .5rem
+
+@media all and ( min-width: 560px )
+  .popup
+    &__form
+      padding: 4rem 6rem

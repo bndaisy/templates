@@ -19,8 +19,7 @@
 @media all and ( min-width: 768px )
   .banner
     &__textline
-      +font(14, 20, 500, 26px)
-
+      line-height: 26px
       max-width: 40rem
 
       &:not(:first-of-type)
@@ -29,14 +28,7 @@
 
 @media all and ( min-width: 1024px )
   .banner
-    &__texline
-      max-width: 43rem
-
-
-@media all and ( min-width: 1280px )
-  .banner
     &__textline
-      max-width: 45rem
-
+      max-width: 43rem
 
 @import '--accent/--accent'

@@ -2,13 +2,16 @@
   &__label
     &:not([for=agreement])
       position: absolute
-      top: 1.5rem
-      left: 1.25rem
+      top: 1.25rem
+      left: 1rem
 
-      +font(20, 20, 400, 24px)
+      +font(16, 20, 400, 24px)
       color: $palette__label--secondary
 
+      pointer-events: none
       transition: $transition__speed--medium
+
+
     &[for=agreement]
       position: relative
 
@@ -28,5 +31,13 @@
         background-color: $palette__accent--primary
         border-radius: .25rem
 
+
+@media all and ( min-width: 360px )
+  .popup
+    &__label
+      &:not([for=agreement])
+        position: absolute
+        top: 1.5rem
+        left: 1.25rem
 
 
