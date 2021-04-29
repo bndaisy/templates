@@ -1,0 +1,85 @@
+.solutions
+  &__solution
+    display: grid
+    grid-auto-columns: minmax(min-content, max-content)
+    grid-template-areas: 'trouble' 'image' 'solution'
+
+
+.solution
+  &__img
+    grid-area: image
+    justify-self: center
+    align-self: center
+
+    padding: 2.5rem
+
+  &__content
+    display: grid
+    justify-items: center
+    row-gap: .75rem
+
+    width: 100%
+
+    &--trouble
+      grid-area: trouble
+      .solution__headline
+        color: $palette__text--accent-secondary
+      .solution__textline
+        +font(14, 20, 700, 20px)
+        color: $palette__text--primary
+
+    &--solution
+      grid-area: solution
+      .solution__headline
+        color: $palette__text--accent-primary
+      .solution__textline
+        +font(14, 16, 400, 20px)
+        color: $palette__text--primary
+        padding: 0 .5rem
+
+  &__headline
+    display: flex
+    align-items: center
+
+    +font(16, 20, 700)
+    text-transform: uppercase
+
+  &__textline
+    text-align: center
+
+
+@media all and ( min-width: 768px  )
+  .solutions
+    &__solution
+      grid-template-columns: minmax(min-content, 25.5rem) minmax(min-content, 29.6875rem)
+      grid-template-areas: 'image trouble' 'image solution'
+      justify-self: start
+      grid-gap: 2rem
+
+      max-width: 57.375rem
+      width: 100%
+
+      &:nth-of-type(2n)
+        grid-template-columns: minmax(min-content, 29.6875rem) minmax(min-content, 25.5rem)
+        grid-template-areas: 'trouble image' 'solution image'
+        justify-self: end
+
+
+  .solution
+    &__img
+      padding: 0
+
+    &__content
+      justify-items: start
+
+      &--trouble
+        align-self: end
+      &--solution
+        align-self: start
+        .solution__textline
+          padding: 0
+
+    &__textline
+      text-align: start
+
+

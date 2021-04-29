@@ -1,15 +1,20 @@
 extends ../components/__system/layout/default
-include ../components/header/header
-include ../components/banner/banner
-include ../components/animation/animation
 
-include ../components/nav/nav
-include ../components/icon/icon
-include ../components/burger-menu/burger-menu
-include ../components/contacts-menu/contacts-menu
-include ../components/button/button
+//- Вынести эти зависимости в отдельный файл!
+include ../components/header/header
+include ../components/content/content
+
+
+include ../components/banner/banner
+include ../components/solutions/solutions
 
 include ../components/logo/logo
+include ../components/icon/icon
+include ../components/button/button
+
+include ../components/nav/nav
+include ../components/burger-menu/burger-menu
+
 
 block head
   include ../components/page/home-page/variables
@@ -19,7 +24,8 @@ block styles
 
 block body
   +header(page)
-    +contacts-menu('header', header.contacts[1].url)
+    a.header__contacts-menu(href = `${header.contacts[1].url}`)
+      +icon(path, 'header', 'call')
     +logo('header', path)
       +icon('/', 'header', 'logo')
     +burger-menu('header')
@@ -27,8 +33,10 @@ block body
       +nav('header', header.contacts)&attributes({'class': 'nav--contacts'})
       +nav('header', header.navigation)&attributes({'class': 'nav--navigation'})
     +button('header', header.button)
-  +banner(page, banner)
-    p.banner__textline С #[span.banner__textline--accent ВамСвет.Дизайн] ваша работа станет проще, а доход — выше.
-    +button('banner', banner.content.button)
+  +content(page)
+    +banner('content', banner)
+      p.banner__textline С #[span.banner__textline--accent ВамСвет.Дизайн] ваша работа станет проще, а доход — выше.
+      +button('banner', banner.content.button)
+    +solutions('content', solutions)
 
   script(src='js/main.js')

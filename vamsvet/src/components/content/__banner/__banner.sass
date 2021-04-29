@@ -1,0 +1,25 @@
+.content
+  &__banner
+    position: relative
+
+    max-height: 880px
+    min-height: 500px
+    background: linear-gradient(180deg, #001325 11.46%, rgba(0, 26, 52, 0) 100%)
+
+
+@media all and ( min-width: 476px )
+  .content
+    &__banner
+      background: linear-gradient(360deg, #001325 11.46%, rgba(0, 26, 52, 0) 100%)
+
+      &::after
+        content: ''
+
+        position: absolute
+        top: 100%
+        left: 0
+        z-index: 0
+
+        height: 50%
+        width: 100%
+        background: linear-gradient(180deg, #001325 11.46%, rgba(0, 26, 52, 0) 100%)

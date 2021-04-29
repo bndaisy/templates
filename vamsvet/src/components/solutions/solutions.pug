@@ -1,0 +1,18 @@
+mixin solutions(parent, solutions)
+  article.solutions(class = `${parent}__solutions`)
+    each solution in solutions
+      +solution(solution)
+
+
+mixin solution({ image, content })
+  .solution.solutions__solution
+    img.solution__img(src=`${image.path}/solutions__img--${image.modifier}.${image.type}` alt=`${image.alt}`)
+
+    each item in content
+      - let { headline, textline, modifier, icon } = item;
+
+      .solution__content(class = `solution__content--${modifier}`)
+        h2.solution__headline
+          +icon(icon.path, icon.parent, icon.name)
+          = headline
+        p.solution__textline= textline

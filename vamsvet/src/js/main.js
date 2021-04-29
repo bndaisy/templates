@@ -7,6 +7,9 @@ function enableNavigation({ target }) {
   const toggler = this.querySelector('.burger-menu');
 
   brgmenu(target, toggler, navigation);
+
+  if (navigation.classList.contains('is-active')) document.body.style.overflow = 'hidden';
+  else document.body.style.overflow = 'visible';
 }
 
 header.addEventListener('click', enableNavigation);
