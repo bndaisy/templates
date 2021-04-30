@@ -37,9 +37,7 @@
 @media all and ( min-width: 360px )
   .popup
     &__input
-      &[type=text],
-      &[type=password],
-      &[type=tel]
+      &:not([type=checkbox])
         padding: 1.5rem 1.125rem 1.125rem
 
         &:focus

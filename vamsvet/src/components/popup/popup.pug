@@ -1,4 +1,4 @@
-mixin popup(parent, { modifier, fields })
+mixin popup(parent, { fields, modifier })
   .popup(class = `${parent}__popup`)&attributes({ 'class': modifier ? `popup--${modifier}` : '' })
     form.popup__form
       //-  Исправить этот костыль
