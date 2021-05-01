@@ -8,10 +8,10 @@
     justify-items: center
     justify-self: center
     align-self: start
-    row-gap: 1.75rem
+    row-gap: 1rem
 
-    padding: 3rem 1.75rem
-    margin: 6rem .5rem 0
+    padding: 1.75rem 1rem
+    margin: 1rem .5rem 0
 
     background: $palette__background--primary
     box-shadow: 0 0 1.5rem rgba($palette__accent--primary, .25)
@@ -21,17 +21,30 @@
 @media all and ( min-width: 360px )
   .popup
     &__form
-      padding: 3rem 2rem
-      margin: 6rem 1rem 0
+      row-gap: 1.25rem
+
+      padding: 2.75rem 2rem
 
 
-@media all and ( min-width: 420px )
+@media all and ( min-width: 400px )
   .popup
     &__form
-      padding: 4rem
+      row-gap: 1.5rem
+
+      margin: 2rem .5rem 0
+      padding: 3rem 2rem
 
 
 @media all and ( min-width: 560px )
   .popup
     &__form
+      row-gap: 1.75rem
+
+      margin: 4rem .5rem 0
       padding: 4rem 6rem
+
+
+@media all and ( min-width: 768px )
+  .popup
+    &__form
+      margin: 6rem .5rem 0

@@ -1,0 +1,10 @@
+mixin form(parent, { title, fields, modifier })
+  form.form(class = `${parent}__form`)&attributes({ 'class': modifier ? `popup--${modifier}` : '' })
+    h2.form__title= title
+
+    each field in fields
+      .form__field
+        input.form__input&attributes({'type': `${field.type}`, 'name': `${field.name}`})
+        label.form__label= field.label
+
+    block

@@ -1,14 +1,4 @@
-mixin popup(parent, { fields, modifier })
-  .popup(class = `${parent}__popup`)&attributes({ 'class': modifier ? `popup--${modifier}` : '' })
-    form.popup__form
-      //-  Исправить этот костыль
-      h2.popup__title Регистрация
-        .popup__title--newline нового пользователя
+mixin popup(parent)
+  .popup(class = `${parent}__popup`)
 
-      each field in fields
-        .popup__field
-          input.popup__input&attributes({'type': `${field.type}`, 'name': `${field.name}`})
-          if (field.for)
-            label.popup__label&attributes({'for' :`${field.for}`})= field.label
-
-      block
+    block

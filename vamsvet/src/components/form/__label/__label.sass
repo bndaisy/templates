@@ -1,0 +1,49 @@
+.form
+  &__input
+    &:not([name=agreement])
+      &+.form
+        &__label
+          position: absolute
+          top: 1.25rem
+          left: 1rem
+
+          +font(16, 20, 400, 24px)
+          color: $palette__label--secondary
+
+          pointer-events: none
+          transition: $transition__speed--medium
+
+.form
+  &__input
+    &[name=agreement]
+      &+.form__label
+        position: relative
+
+        +font(12, 12, 400, 15px)
+        color: $palette__label--primary
+        max-width: 232px
+
+        &::before
+          content: ''
+
+          position: absolute
+          left: -1.75rem
+          top: .125rem
+
+          width: 1.25rem
+          height: 1.25rem
+          background-color: $palette__accent--primary
+          border-radius: .25rem
+
+
+@media all and ( min-width: 360px )
+  .form
+    &__input
+      &:not([name=agreement])
+        &+.form
+          &__label
+          position: absolute
+          top: 1.5rem
+          left: 1.25rem
+
+
