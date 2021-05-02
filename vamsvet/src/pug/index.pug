@@ -7,6 +7,7 @@ include ../components/content/content
 
 include ../components/banner/banner
 include ../components/solutions/solutions
+include ../components/subscribe/subscribe
 
 include ../components/logo/logo
 include ../components/icon/icon
@@ -35,11 +36,15 @@ block body
       +nav('header', header.contacts)&attributes({'class': 'nav--contacts'})
       +nav('header', header.navigation)&attributes({'class': 'nav--navigation'})
     +button('header', header.button)
+
   +content(page)
     +banner('content', banner)
-      p.banner__textline С #[span.banner__textline--accent ВамСвет.Дизайн] ваша работа станет проще, а доход — выше.
       +button('banner', banner.content.button)
     +solutions('content', solutions)
+    +subscribe('content')
+      +form('subscribe', subscribe)
+        +button('form', subscribe.button)
+
   +popup(page)
     +form('popup', register)
       +button('form', register.button)

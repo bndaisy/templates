@@ -1,12 +1,32 @@
 .form
   &__title
-    +font(18, 24, 700, 29px)
     color: $palette__text--primary
     text-transform: uppercase
     text-align: center
+
+.form--subscribe
+  .form
+    &__title
+      +font(16, 46, 900)
+      color: $palette__text--primary
+
+.form--register
+  .form
+    &__title
+      +font(18, 24, 700, 29px)
 
 
 @media all and ( min-width: 400px )
   .form
     &__title
       margin-bottom: 1rem
+
+
+@media all and ( min-width: 768px )
+  .form--subscribe
+    .form
+      &__title
+        grid-column: 1
+        grid-row: span 4
+        margin-bottom: 0
+        text-align: start

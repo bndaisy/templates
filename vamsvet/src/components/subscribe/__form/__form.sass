@@ -1,0 +1,29 @@
+.subscribe
+  &__form
+    position: relative
+    z-index: 1
+
+    display: grid
+    grid-template-columns: minmax(min-content, max-content)
+    grid-auto-rows: auto
+    justify-self: center
+    justify-items: center
+    align-self: start
+    row-gap: 1.5rem
+
+    padding: 3rem 1rem
+    max-width: 85rem
+
+
+@media all and ( min-width: 768px )
+  .subscribe
+    &__form
+      grid-template-columns: 1fr minmax(min-content, max-content)
+      column-gap: 3rem
+      padding: 15rem 2rem 10rem
+
+
+@media all and ( min-width: 1024px )
+  .subscribe
+    &__form
+      padding: 25rem 2rem 20rem

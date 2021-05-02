@@ -1,3 +1,15 @@
+.form--subscribe
+  .form
+    &__input
+      &:not([type=checkbox])
+        background: rgba($palette__input--background-foreground, 100)
+
+.form--register
+  .form
+    &__input
+      &:not([type=checkbox])
+        background: rgba($palette__input--background-secondary, .1)
+
 .form
   &__input
     &:not([type=checkbox])
@@ -8,8 +20,6 @@
       border: none
       border-radius: .25rem
       width: 100%
-
-      background: rgba($palette__input--background-secondary, .1)
 
       transition: $transition__speed--medium
 

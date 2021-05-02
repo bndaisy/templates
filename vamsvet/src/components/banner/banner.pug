@@ -6,5 +6,6 @@ mixin banner(parent, { phone, desktop, content })
       img.banner__img(src=`${desktop.path}/banner__img--${desktop.modifier}.${desktop.type}` alt=`${desktop.alt}`)
     .banner__content
       h2.banner__title= content.headline
-      p.banner__textline= content.textline
+      each textline in content.textline
+        p.banner__textline= textline
       block

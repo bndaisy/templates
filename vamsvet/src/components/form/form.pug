@@ -1,5 +1,5 @@
 mixin form(parent, { title, fields, modifier })
-  form.form(class = `${parent}__form`)&attributes({ 'class': modifier ? `popup--${modifier}` : '' })
+  form.form(class = `${parent}__form`)&attributes({ 'class': modifier ? `form--${modifier}` : '' })
     h2.form__title= title
 
     each field in fields
