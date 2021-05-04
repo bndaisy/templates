@@ -5,7 +5,7 @@
     display: grid
 
     background: url('../images/background__img--subscribe.webp') bottom no-repeat
-    background-size: 100% 50%
+    background-size: 100% 100%
     width: 100%
 
     &::before
@@ -30,7 +30,7 @@
       background: linear-gradient(360deg, #000711 11.46%, rgba(0, 0, 0, 0) 100%)
 
 
-@media all and ( min-width: 1024px )
+@media all and ( min-width: 768px )
   .content
     &__subscribe
       position: relative
@@ -41,8 +41,60 @@
       background-size: 100% 100%
 
       &::before
-        top: -5rem
-        background-size: 90% 55%
+        top: -3rem
+        background-size: 95% 50%
 
       &::after
         display: none
+
+
+@media all and ( min-width: 1024px )
+  .content
+    &__subscribe
+      &::before
+        top: -3.5rem
+        background-size: 95% 45%
+
+
+@media all and ( min-width: 1280px )
+  .content
+    &__subscribe
+      &::before
+        top: -3.5rem
+
+
+@media all and ( min-width: 1360px )
+  .content
+    &__subscribe
+      &::before
+        top: -4rem
+        background-size: 95% 50%
+
+
+@media all and ( min-width: 1440px )
+  .content
+    &__subscribe
+      &::before
+        top: -4.5rem
+
+
+@media all and ( min-width: 1520px )
+  .content
+    &__subscribe
+      &::before
+        top: -5rem
+
+
+@media all and ( min-width: 1600px )
+  .content
+    &__subscribe
+      &::before
+        top: -5.5rem
+        background-size: 90% 55%
+
+
+@media all and ( min-width: 1920px )
+  .content
+    &__subscribe
+      &::before
+        top: -6rem
