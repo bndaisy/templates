@@ -6,7 +6,7 @@ mixin solutions(parent, solutions)
 
 mixin solution({ image, content })
   .solution.solutions__solution
-    img.solution__img(src=`${image.path}/solutions__img--${image.modifier}.${image.type}` alt=`${image.alt}`)
+    img.solution__img(src=`${image.path}/solution__img--${image.modifier}.${image.type}` alt=`${image.alt}`)
 
     each item in content
       - let { headline, textline, modifier, icon } = item;

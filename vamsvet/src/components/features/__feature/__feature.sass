@@ -1,0 +1,75 @@
+.features
+  &__feature
+    position: relative
+
+    display: grid
+    grid-template-rows: minmax(min-content, max-content) 1fr
+    row-gap: .75rem
+
+    padding: 1rem
+    max-width: 23rem
+    width: 100%
+
+    &:nth-of-type(odd)
+      &::after
+        content: url(../icons/background/arrow.svg)
+
+        position: absolute
+        top: 25%
+        right: -15%
+        max-width: 3rem
+        width: 100%
+
+
+@media all and ( min-width: 360px )
+  .features
+    &__feature
+      &:nth-of-type(odd)
+        &::after
+          right: -14%
+
+
+@media all and ( min-width: 420px )
+  .features
+    &__feature
+      &:nth-of-type(odd)
+        &::after
+          right: -13%
+
+
+@media all and ( min-width: 475px )
+  .features
+    &__feature
+      &:nth-of-type(odd)
+        &::after
+          max-width: 5rem
+          right: -15%
+
+
+@media all and ( min-width: 768px )
+  .features
+    &__feature
+      padding: 2rem
+      &:nth-of-type(even)
+        &::after
+          content: url(../icons/background/arrow.svg)
+
+          position: absolute
+          top: 30%
+          right: -12%
+          max-width: 6rem
+          width: 100%
+
+      &:nth-of-type(3n+3)
+        &::after
+          display: none
+
+
+@media all and ( min-width: 1024px )
+  .features
+    &__feature
+      &:not(:nth-of-type(3n+3))
+        &::after
+          right: -20%
+          max-width: 7rem
+

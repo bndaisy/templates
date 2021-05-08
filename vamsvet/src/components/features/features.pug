@@ -1,0 +1,7 @@
+mixin features(parent, { title, features })
+  section.features(class = `${parent}__features`)
+    h2.features__title= title
+    each feature in features
+      .features__feature
+        +icon(feature.icon.path, feature.icon.parent, feature.icon.name)
+        p.features__textline= feature.textline

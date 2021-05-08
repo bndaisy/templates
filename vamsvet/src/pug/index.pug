@@ -8,6 +8,7 @@ include ../components/content/content
 include ../components/banner/banner
 include ../components/solutions/solutions
 include ../components/subscribe/subscribe
+include ../components/features/features
 
 include ../components/logo/logo
 include ../components/icon/icon
@@ -44,6 +45,7 @@ block body
     +subscribe('content')
       +form('subscribe', subscribe)
         +button('form', subscribe.button)
+    +features('content', features)
 
   +popup(page)
     +form('popup', register)
