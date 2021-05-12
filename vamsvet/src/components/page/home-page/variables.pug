@@ -37,7 +37,6 @@
         title: 'Контакты',
         url: '#' }],
     button: {
-      parent: 'header',
       content: 'Войти',
       icon: {
         path: path,
@@ -64,7 +63,6 @@
           'Добро пожаловать в команду «ВамСвет»! С нами, вы можете забыть о сроках поставки, документообороте, постоянных подборках товаров.',
           'С ВамСвет.Дизайн ваша работа станет проще, а доход — выше.'],
         button: {
-          parent: 'banner',
           content: 'Начните сейчас'}}};
 
 
@@ -206,6 +204,93 @@
           name: 'delivery',
           parent: 'features' }}]};
 
+
+//- Carousel
+-
+  const carousel = {
+    title: 'Проекты дизайнеров',
+    slides: [{
+        image: {
+            path: 'images/project-card',
+            modifier: 'first',
+            type: 'webp',
+            alt: 'Проект студии Z-design' },
+        author: {
+            image: {
+                path: 'images/project-card/author',
+                modifier: 'first',
+                type: 'webp',
+                alt: 'Изображение автора проекта Юлии Никольской' },
+            textline: 'Юлия Никольская',
+            link: {
+              url: '#',
+              textline: 'Студия Z-design' }}},
+      {
+        image: {
+            path: 'images/project-card',
+            modifier: 'second',
+            type: 'webp',
+            alt: 'Art interior' },
+        author: {
+            image: {
+                path: 'images/project-card/author',
+                modifier: 'first',
+                type: 'webp',
+                alt: 'Изображение автора проекта Юлии Никольской' },
+            textline: 'Юлия Никольская',
+            link: {
+              url: '#',
+              textline: 'Студия Art Interior' }}},
+      {
+        image: {
+            path: 'images/project-card',
+            modifier: 'third',
+            type: 'webp',
+            alt: 'Проект студии Z-design' },
+        author: {
+            image: {
+                path: 'images/project-card/author',
+                modifier: 'first',
+                type: 'webp',
+                alt: 'Изображение автора проекта Юлии Никольской' },
+            textline: 'Юлия Никольская',
+            link: {
+              url: '#',
+              textline: 'Студия Z-design' }}},
+      {
+        image: {
+            path: 'images/project-card',
+            modifier: 'fourth',
+            type: 'webp',
+            alt: 'Проект студии Z-design' },
+        author: {
+            image: {
+                path: 'images/project-card/author',
+                modifier: 'first',
+                type: 'webp',
+                alt: 'Изображение автора проекта Юлии Никольской' },
+            textline: 'Юлия Никольская',
+            link: {
+              url: '#',
+              textline: 'Студия Z-design' }}}],
+    togglers: {
+        left: {
+            content: '',
+            modifier: 'toggler-left',
+            icon: {
+              path: path,
+              name: 'arrow-left',
+              parent: 'carousel' }},
+        right: {
+            content: '',
+            modifier: 'toggler-right',
+            icon: {
+              path: path,
+              name: 'arrow-right',
+              parent: 'carousel' }}},
+    button: {
+        content: 'Поделиться проектом',
+        modifier: 'accent' }};
 
 //- Register popup
 -

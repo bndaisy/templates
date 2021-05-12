@@ -1,0 +1,29 @@
+.button
+  &--accent
+    +font(14, 18, 700)
+    text-transform: uppercase
+    color: $palette__text--primary
+    justify-self: center
+    padding: 1rem 2rem
+
+    background-color: $palette__accent--primary
+    border: none
+    border-radius: .5rem
+
+    box-shadow: 0 0 1rem rgba($palette__accent--primary, .7)
+
+@media all and ( min-width: 475px )
+  .button
+    &--accent
+      padding: 1.5rem 2rem
+
+
+@media all and ( min-width: 1024px )
+  .button
+    &--accent
+      box-shadow: none
+      transition: $transition__speed--medium
+      &:hover
+        cursor: pointer
+        box-shadow: 0 0 1rem rgba($palette__accent--primary, .7)
+

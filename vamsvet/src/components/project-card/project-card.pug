@@ -1,0 +1,7 @@
+mixin project-card(parent, { image, author })
+  figure.project-card(class = `${ parent }__project-card`)
+    img.project-card__img(src=`${image.path}/project-card__img--${image.modifier}.${image.type}` alt=`${image.alt}`)
+    figcaption.project-card__description
+      img.project-card__img(src=`${author.image.path}/project-card__img--${author.image.modifier}.${author.image.type}` alt=`${author.image.alt}`)
+      p.project-card__textline= author.textline
+      a.project-card__link(href = `${author.link.url}`, role = 'Author')= author.link.textline

@@ -9,6 +9,7 @@ include ../components/banner/banner
 include ../components/solutions/solutions
 include ../components/subscribe/subscribe
 include ../components/features/features
+include ../components/carousel/carousel
 
 include ../components/logo/logo
 include ../components/icon/icon
@@ -18,6 +19,7 @@ include ../components/button/button
 include ../components/nav/nav
 include ../components/popup/popup
 include ../components/form/form
+include ../components/project-card/project-card
 
 
 block head
@@ -46,6 +48,9 @@ block body
       +form('subscribe', subscribe)
         +button('form', subscribe.button)
     +features('content', features)
+    +carousel('content', carousel)
+      p.carousel__textline Если вы хотите, чтобы мы опубликовали ваш проект у себя на сайте, — расскажите нам о нем и пришлите фото!
+      +button('carousel', carousel.button)
 
   +popup(page)
     +form('popup', register)
