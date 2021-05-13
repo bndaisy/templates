@@ -1,6 +1,7 @@
 import handler from './handlers';
 import navigation from '../components/burger-menu/burger-menu';
 import popup from '../components/popup/popup';
+import Carousel from '../components/carousel/carousel';
 
 const page = document.querySelector('.home-page');
 const header = document.querySelector('.header');
@@ -30,3 +31,5 @@ subscribeTitle.insertAdjacentHTML('afterbegin', handler.insertTag(subscribeTitle
 
 // Fix the title for responsive design
 registerTitle.insertAdjacentHTML('afterbegin', handler.insertTag(registerTitle, 'Регистрация', 'br'));
+
+const carousel = new Carousel('.content__carousel', {});
