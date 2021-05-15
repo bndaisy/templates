@@ -2,11 +2,10 @@ mixin carousel(parent, { title, slides, togglers })
   article.carousel(class = `${parent}__carousel`)
     h2.carousel__title= title
     .carousel__container
-      .carousel__content
-        each slide in slides
-          +project-card('carousel', slide)
+      each slide in slides
+        +project-card('carousel', slide)
 
-      +button('carousel', togglers.left)
-      +button('carousel', togglers.right)
+    +button('carousel', togglers.left)
+    +button('carousel', togglers.right)
 
     block

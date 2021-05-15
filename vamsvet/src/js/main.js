@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import handler from './handlers';
 import navigation from '../components/burger-menu/burger-menu';
 import popup from '../components/popup/popup';
@@ -24,7 +25,10 @@ header.addEventListener('click', function ({ target }) {
 // Fix the banner textline for coloring
 banner.querySelectorAll('[class*=textline]')
   .forEach((textline) => {
-    if (textline.textContent.includes('ВамСвет.Дизайн')) textline.insertAdjacentHTML('afterbegin', handler.insertTag(textline, 'ВамСвет.Дизайн', 'span', 'banner__fragment--accent'));
+    if (textline.textContent.includes('ВамСвет.Дизайн')) {
+      textline.insertAdjacentHTML('afterbegin',
+        handler.insertTag(textline, 'ВамСвет.Дизайн', 'span', 'banner__fragment--accent'));
+    }
   });
 
 subscribeTitle.insertAdjacentHTML('afterbegin', handler.insertTag(subscribeTitle, 'ВамСвет.Дизайн', 'span', 'subscribe__fragment--accent'));
@@ -32,4 +36,28 @@ subscribeTitle.insertAdjacentHTML('afterbegin', handler.insertTag(subscribeTitle
 // Fix the title for responsive design
 registerTitle.insertAdjacentHTML('afterbegin', handler.insertTag(registerTitle, 'Регистрация', 'br'));
 
-const carousel = new Carousel('.content__carousel', {});
+const carousel = new Carousel('.content__carousel', {
+  element: '.carousel__project-card',
+  options: {
+    pagination: true,
+  },
+  breakpoints: {
+    320: {
+      togglers: false,
+      swipe: true,
+    },
+    768: {
+      pagination: false,
+      togglers: true,
+      swipe: false,
+    },
+  },
+  togglers: {
+    prev: '.button--toggler-left',
+    next: '.button--toggler-right',
+  },
+});
+
+carousel.initialize();
+
+console.log(carousel);
