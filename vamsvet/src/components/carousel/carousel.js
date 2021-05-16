@@ -109,14 +109,24 @@ class Carousel {
 
   // MediaQueries
   getMediaQueries(breakpoints) {
-    const mediaQueries = [];
+    const mediaQueries = Object.keys(breakpoints).reduce((acc, breakpoint, index, array) => {
+      if (index === array.length - 1) acc[breakpoint] = [+breakpoint, 1920];
+      else acc[breakpoint] = [+breakpoint, +array[index + 1]];
 
-    Object.keys(breakpoints).forEach((breakpoint, index, array) => {
-      if (index !== Object.keys(breakpoints).length - 1) mediaQueries.push([+breakpoint, +array[index + 1]]);
-      else mediaQueries.push([+breakpoint, window.screen.width]);
-    });
+      return acc;
+    }, {});
 
     return mediaQueries;
+  }
+
+  getCurrentDevice(mediaQueries) {
+    let device;
+
+    Object.entries(mediaQueries).forEach(([breakpoint, [start, end]]) => {
+      if (window.innerWidth >= start && window.innerWidth < end) device = breakpoint;
+    });
+
+    return device;
   }
 
   initialize() {
@@ -127,15 +137,23 @@ class Carousel {
 
     if (!this.isEmpty(this.breakpoints)) {
       this.__mediaQueries = this.getMediaQueries(this.breakpoints);
+      this.__device = this.getCurrentDevice(this.__mediaQueries);
+
+      this.__updateOptions(this.options, this.breakpoints[this.__device]);
 
       window.addEventListener('resize', () => {
-        const currentWidth = window.innerWidth;
+        const currentDevice = this.getCurrentDevice(this.__mediaQueries);
 
-        this.__mediaQueries.forEach(([start, end]) => {
-          if (currentWidth >= start && currentWidth <= end) this.__updateOptions(this.options, this.breakpoints[start]);
-        });
+        if (this.__device !== currentDevice) {
+          this.__device = currentDevice;
+          this.__updateOptions(this.options, this.breakpoints[this.__device]);
+          // TODO: Create reinit to slider before main functions
+          console.log('device is changed');
+        }
       });
     }
+
+    // TODO: Create main functions
 
     if (this.options.pagination) this.renderingPagination(this.indicators);
   }

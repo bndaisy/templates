@@ -59,5 +59,3 @@ const carousel = new Carousel('.content__carousel', {
 });
 
 carousel.initialize();
-
-console.log(carousel);
