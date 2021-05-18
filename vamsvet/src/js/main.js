@@ -36,26 +36,30 @@ subscribeTitle.insertAdjacentHTML('afterbegin', handler.insertTag(subscribeTitle
 // Fix the title for responsive design
 registerTitle.insertAdjacentHTML('afterbegin', handler.insertTag(registerTitle, 'Регистрация', 'br'));
 
-const carousel = new Carousel('.content__carousel', {
-  element: '.carousel__project-card',
+const carousel = new Carousel('content__carousel', {
+  element: 'carousel__project-card',
   options: {
-    pagination: true,
+    indicators: false,
   },
   breakpoints: {
     320: {
       togglers: false,
       swipe: true,
+      perview: 1,
     },
     768: {
-      pagination: false,
+      indicators: true,
       togglers: true,
       swipe: false,
+      perview: 3,
     },
   },
   togglers: {
-    prev: '.button--toggler-left',
-    next: '.button--toggler-right',
+    prev: 'button--toggler-left',
+    next: 'button--toggler-right',
   },
 });
 
 carousel.initialize();
+
+console.log(carousel)
