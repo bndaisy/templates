@@ -1,20 +1,11 @@
 .carousel
   &__container
-    display: grid
-    grid-template-columns: 1fr
-    row-gap: 2rem
-
-    max-width: 80rem
     width: 100%
+    overflow: hidden
+    padding: 1rem 1rem 0
 
-@media all and ( min-width:768px )
+
+@media all and ( min-width: 768px )
   .carousel
     &__container
-      grid-template-columns: repeat(2, 1fr)
-      grid-auto-rows: 25rem 20rem
-      column-gap: 2rem
-
-@media all and ( min-width: 1024px )
-  .carousel
-    &__container
-      grid-template-columns: 27rem repeat(2, 1fr)
+      padding: 0

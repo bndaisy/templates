@@ -4,8 +4,8 @@
 /* eslint-disable no-underscore-dangle */
 
 // Selectors
-const CAROUSEL_SELECTOR = 'carousel';
 const CAROUSEL_CONTAINER = 'carousel__container';
+const CAROUSEL_WRAPPER = 'carousel__wrapper';
 const CAROUSEL_ELEMENT = 'carousel__element';
 const CAROUSEL_CONTENT = 'carousel__content';
 const CAROUSEL_TOGGLER_PREV = 'carousel__toggler-prev';
@@ -20,16 +20,18 @@ class Carousel {
       loop: false,
       autoplay: false,
       delay: 5000,
-      swipe: true,
+      swipe: false,
       perview: 1,
     };
 
-    this.carousel = this.findElement(selector) || this.findElement(CAROUSEL_SELECTOR);
-    this.container = this.findElement(settings.container, this.carousel) || this.findElement(CAROUSEL_CONTAINER, this.carousel);
-    this.elements = this.findElements(settings.element, this.container) || this.findElements(CAROUSEL_ELEMENT, this.container);
+    this.container = this.findElement(selector) || this.findElement(CAROUSEL_CONTAINER);
+    this.wrapper = this.findElement(settings.wrapper, this.container) || this.findElement(CAROUSEL_WRAPPER, this.container);
+    this.elements = this.findElements(settings.element, this.wrapper) || this.findElements(CAROUSEL_ELEMENT, this.wrapper);
 
+    // Set options
     if (settings.options) this.__updateOptions(this.options, settings.options);
 
+    // Set breakpoints
     if (settings.breakpoints) {
       this.breakpoints = Object.entries(settings.breakpoints).reduce((breakpoints, [breakpoint, value]) => {
         breakpoints[breakpoint] = value;
@@ -38,6 +40,7 @@ class Carousel {
       }, {});
     }
 
+    // ! Rewrite setting togglers
     if (this.options.togglers && !settings.togglers) {
       this.togglers = {
         prev: this.createToggler(CAROUSEL_TOGGLER_PREV, 'arrow-left'),
@@ -52,28 +55,13 @@ class Carousel {
 
     if (this.options.indicators) {
       this.indicators = this.createIndicators(this.elements, this.options.perview, settings.indicator);
-      console.log('ok');
     }
-
-    if (settings.styles) {
-      this.styles = {
-        display: settings.styles,
-      };
-    }
-
-    this.__updateOptions = this.__updateOptions.bind(this);
   }
 
   __updateOptions(options, config) {
     Object.entries(config).forEach(([option, value]) => {
       if (Object.prototype.hasOwnProperty.call(options, option)) this.options[option] = value;
     });
-  }
-
-  __deleteCarouselElements() {
-    while (this.container.firstElementChild) {
-      this.container.firstElementChild.remove();
-    }
   }
 
   __disableNavigation() {
@@ -94,6 +82,27 @@ class Carousel {
     return [...element.querySelectorAll(`.${selector}`)];
   }
 
+  setProportions() {
+    const { width } = this.container.getBoundingClientRect();
+
+    this.wrapper.style.width = `${width * this.__elementsCount}px`;
+
+    if (this.options.swipe) {
+      this.wrappedElements.forEach((element) => {
+        element.style.width = `${width - width / 100 * 15}px`;
+      });
+
+      this.wrapper.style.width = `${this.wrappedElements.reduce((acc, element) => {
+        acc += element.getBoundingClientRect().width;
+        return acc;
+      }, 0)}px`;
+    } else {
+      this.wrappedElements.forEach((element) => {
+        element.style.width = `${width}px`;
+      });
+    }
+  }
+
   // Append wrapper to slides, based on perview
   getManagedContent() {
     const managedContent = this.elements.reduce((content, item, index) => {
@@ -103,7 +112,6 @@ class Carousel {
         const fragment = document.createElement('div');
 
         fragment.classList.add(CAROUSEL_CONTENT);
-        fragment.style.display = this.styles?.display || 'flex';
 
         content[element] = fragment;
       }
@@ -117,11 +125,13 @@ class Carousel {
   }
 
   renderingManagedContent() {
-    const content = this.getManagedContent();
+    this.wrappedElements = this.getManagedContent();
 
-    this.__deleteCarouselElements();
+    while (this.wrapper.firstElementChild) {
+      this.wrapper.firstElementChild.remove();
+    }
 
-    content.forEach((element) => this.container.append(element));
+    this.wrappedElements.forEach((element) => this.wrapper.append(element));
   }
 
   // Create navigation
@@ -158,7 +168,7 @@ class Carousel {
 
     this.indicators.forEach((indicator) => indicators.append(indicator));
 
-    this.container.insertAdjacentElement('afterend', indicators);
+    this.wrapper.insertAdjacentElement('afterend', indicators);
   }
 
   renderingTogglers() {
@@ -207,13 +217,18 @@ class Carousel {
           this.__updateOptions(this.options, this.breakpoints[this.__device]);
           this.reinitialize();
         }
+
+        this.setProportions();
       });
     }
 
-    this.__currentElement = 0;
     this.renderingManagedContent();
 
-    this.__elementsCount = this.container.children.length;
+    this.__currentElement = 0;
+    this.__elementsCount = this.wrappedElements.length;
+
+    this.setProportions();
+
     if (this.__elementsCount <= 1) this.__disableNavigation();
 
     if (this.options.pagination) this.renderingPagination(this.indicators);
