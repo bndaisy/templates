@@ -6,4 +6,23 @@
 @media all and ( min-width: 1024px )
   .button
     &--toggler-left
-      display: block
+      display: flex
+
+      position: absolute
+      top: 50%
+      left: .25rem
+
+      background-color: transparent
+      border: 2px solid $palette__accent--primary
+      border-radius: .25rem
+
+      padding: 0.5rem
+
+      transition: $transition__speed--medium
+
+      &:hover
+        cursor: pointer
+        background-color: $palette__accent--primary
+        .icon--arrow-left
+          fill: $palette__icon--primary
+

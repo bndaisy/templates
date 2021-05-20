@@ -4,10 +4,13 @@
     text-transform: uppercase
     color: $palette__text--primary
     padding: 1rem
-
     text-align: center
 
 @media all and ( min-width: 1024px )
   .project-card
     &__link
       +font(24, 24, 700)
+      padding: 0
+      text-align: start
+
+      transition: $transition__speed--medium
