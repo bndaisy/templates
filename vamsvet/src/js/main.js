@@ -44,14 +44,13 @@ const carousel = new Carousel('carousel__container', {
   breakpoints: {
     320: {
       togglers: false,
-      // swipe: true,
+      swipe: true,
       perview: 1,
     },
-    768: {
-      indicators: true,
+    1024: {
       togglers: true,
-      // swipe: false,
       perview: 4,
+      swipe: false,
     },
   },
   togglers: {

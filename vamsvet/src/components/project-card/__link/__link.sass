@@ -1,8 +1,13 @@
 .project-card
   &__link
-    +font(14, 24, 700)
+    +font(14, 32, 700)
     text-transform: uppercase
     color: $palette__text--primary
     padding: 1rem
 
     text-align: center
+
+@media all and ( min-width: 1024px )
+  .project-card
+    &__link
+      +font(24, 24, 700)

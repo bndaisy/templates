@@ -84,23 +84,23 @@ class Carousel {
 
   setProportions() {
     const { width } = this.container.getBoundingClientRect();
+    const paddingLeft = parseInt(window.getComputedStyle(this.container).paddingLeft, 10) || 0;
+    const paddingRight = parseInt(window.getComputedStyle(this.container).paddingRight, 10) || 0;
 
-    this.wrapper.style.width = `${width * this.__elementsCount}px`;
+    this.wrappedElements.forEach((element, index, array) => {
+      element.style.width = this.options.swipe
+        ? `${Math.floor(width - (width * 0.25))}px`
+        : element.style.width = `${width - paddingLeft - paddingRight}px`;
 
-    if (this.options.swipe) {
-      this.wrappedElements.forEach((element) => {
-        element.style.width = `${width - width / 100 * 15}px`;
-      });
+      if (index !== array.length - 1) element.style.marginRight = `${paddingRight}px`;
+    });
 
-      this.wrapper.style.width = `${this.wrappedElements.reduce((acc, element) => {
-        acc += element.getBoundingClientRect().width;
-        return acc;
-      }, 0)}px`;
-    } else {
-      this.wrappedElements.forEach((element) => {
-        element.style.width = `${width}px`;
-      });
-    }
+    this.wrapper.style.width = `${this.wrappedElements.reduce((acc, element) => {
+      const marginRight = parseInt(element.style.marginRight, 10) || 0;
+
+      acc += parseInt(element.style.width, 10) + marginRight;
+      return acc;
+    }, 0)}px`;
   }
 
   // Append wrapper to slides, based on perview
@@ -127,9 +127,7 @@ class Carousel {
   renderingManagedContent() {
     this.wrappedElements = this.getManagedContent();
 
-    while (this.wrapper.firstElementChild) {
-      this.wrapper.firstElementChild.remove();
-    }
+    if (this.wrapper.children) this.wrapper.innerHTML = '';
 
     this.wrappedElements.forEach((element) => this.wrapper.append(element));
   }
