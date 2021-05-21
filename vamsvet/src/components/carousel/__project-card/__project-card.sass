@@ -12,51 +12,69 @@
 
 @media all and ( min-width: 1024px )
   .carousel
-    &__content
-    .carousel
-      &__project-card
-        &:nth-child(1)
-          grid-column: span 7
-          grid-row: span 13
-
-          &:hover
-            .project-card__description
-              top: 78%
-
-        &:nth-child(2)
-          grid-column: span 12
-          grid-row: span 7
-
-          &:hover
-            .project-card__description
-              top: 60%
-
-        &:nth-child(3),
-        &:nth-child(4)
-          grid-column: span 6
-          grid-row: span 6
-
-          &:hover
-            .project-card__description
-              top: 43%
+    &__project-card
+      &:nth-child(1)
+        grid-column: span 7
+        grid-row: span 13
 
         &:hover
           .project-card__description
-            align-items: center
+            top: 75%
 
-            .project-card__img
-              display: block
+      &:nth-child(2)
+        grid-column: span 12
+        grid-row: span 7
 
-          .project-card__textline
+        &:hover
+          .project-card__description
+            top: 56%
+
+      &:nth-child(3),
+      &:nth-child(4)
+        grid-column: span 6
+        grid-row: span 6
+
+        &:hover
+          .project-card__description
+            top: 37%
+
+      &:hover
+        .project-card__description
+          align-items: center
+
+          .project-card__img
             display: block
 
-          .project-card__link
-            +font(16, 16, 400)
-            color: $palette__accent--secondary
-            text-align: center
-            text-transform: none
+        .project-card__textline
+          display: block
 
-            border-bottom: 1px dotted $palette__accent--secondary
+        .project-card__link
+          +font(16, 16, 400)
+          color: $palette__accent--secondary
+          text-align: center
+          text-transform: none
 
-            &:hover
-              border-bottom: 1px dotted transparent
+          border-bottom: 1px dotted $palette__accent--secondary
+
+          &:hover
+            border-bottom: 1px dotted transparent
+
+
+@media all and ( min-width: 1280px )
+  .carousel
+    &__project-card
+      &:nth-child(1)
+        &:hover
+          .project-card__description
+            top: 80%
+
+      &:nth-child(2)
+        &:hover
+          .project-card__description
+            top: 65%
+
+      &:nth-child(3),
+      &:nth-child(4)
+        &:hover
+          .project-card__description
+            top: 50%

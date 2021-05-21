@@ -3,15 +3,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 
-// Selectors
-const CAROUSEL_CONTAINER = 'carousel__container';
-const CAROUSEL_WRAPPER = 'carousel__wrapper';
-const CAROUSEL_ELEMENT = 'carousel__element';
-const CAROUSEL_CONTENT = 'carousel__content';
-const CAROUSEL_TOGGLER_PREV = 'carousel__toggler-prev';
-const CAROUSEL_TOGGLER_NEXT = 'carousel__toggler-next';
-const CAROUSEL_INDICATOR = 'carousel__indicator';
-
 class Carousel {
   constructor(selector, settings = {}) {
     this.options = {
@@ -24,43 +15,47 @@ class Carousel {
       perview: 1,
     };
 
-    this.container = this.findElement(selector) || this.findElement(CAROUSEL_CONTAINER);
-    this.wrapper = this.findElement(settings.wrapper, this.container) || this.findElement(CAROUSEL_WRAPPER, this.container);
-    this.elements = this.findElements(settings.element, this.wrapper) || this.findElements(CAROUSEL_ELEMENT, this.wrapper);
+    this.selectors = {
+      container: selector || 'carousel__container',
+      content: settings.content || 'carousel__content',
+      slide: settings.slide || 'carousel__slide',
+      element: settings.element || 'carousel__element',
+      indicator: settings.indicator || 'carousel__indicator',
+      togglers: {
+        prev: settings.togglers?.prev || 'carousel__toggler-prev',
+        next: settings.togglers?.next || 'carousel__toggler-next',
+      },
+    };
 
-    // Set options
-    if (settings.options) this.__updateOptions(this.options, settings.options);
+    this.container = this.findElement(this.selectors.container);
+    this.content = this.findElement(this.selectors.content, this.container);
+    this.elements = this.findElements(this.selectors.element, this.content);
 
-    // Set breakpoints
-    if (settings.breakpoints) {
-      this.breakpoints = Object.entries(settings.breakpoints).reduce((breakpoints, [breakpoint, value]) => {
-        breakpoints[breakpoint] = value;
-
-        return breakpoints;
-      }, {});
-    }
-
-    // ! Rewrite setting togglers
-    if (this.options.togglers && !settings.togglers) {
+    if (!this.__isEmptyObject(settings.togglers)) {
       this.togglers = {
-        prev: this.createToggler(CAROUSEL_TOGGLER_PREV, 'arrow-left'),
-        next: this.createToggler(CAROUSEL_TOGGLER_NEXT, 'arrow-right'),
+        prev: this.findElement(settings.togglers.prev, this.container),
+        next: this.findElement(settings.togglers.next, this.container),
       };
     }
 
-    if (this.options.togglers && settings.togglers) {
-      this.togglers.prev = this.findElement(settings.togglers.prev, this.carousel);
-      this.togglers.next = this.findElement(settings.togglers.next, this.carousel);
-    }
+    // Update options
+    if (!this.__isEmptyObject(settings.options)) this.__updateOptions(settings.options);
 
-    if (this.options.indicators) {
-      this.indicators = this.createIndicators(this.elements, this.options.perview, settings.indicator);
-    }
+    // Set breakpoints
+    if (!this.__isEmptyObject(settings.breakpoints)) this.__createObject('breakpoints', settings.breakpoints);
   }
 
-  __updateOptions(options, config) {
+  __createObject(object, config) {
+    this[object] = Object.entries(config).reduce((keys, [key, value]) => {
+      keys[key] = value;
+
+      return keys;
+    }, {});
+  }
+
+  __updateOptions(config) {
     Object.entries(config).forEach(([option, value]) => {
-      if (Object.prototype.hasOwnProperty.call(options, option)) this.options[option] = value;
+      if (Object.prototype.hasOwnProperty.call(this.options, option)) this.options[option] = value;
     });
   }
 
@@ -69,8 +64,17 @@ class Carousel {
     this.options.pagination = false;
   }
 
-  isEmpty(object) {
-    return JSON.stringify(object) === '{}';
+  __enableToggler(toggler, callback) {
+    toggler.addEventListener('click', callback);
+  }
+
+  __disableToggler(toggler, listener) {
+    toggler.removeEventListener('click', listener);
+    console.log('ok')
+  }
+
+  __enableIndicators() {
+    this.indicators.forEach((indicator, index) => indicator.addEventListener('click', () => this.changeElement(index)));
   }
 
   findElement(selector, element = document.documentElement) {
@@ -82,36 +86,48 @@ class Carousel {
     return [...element.querySelectorAll(`.${selector}`)];
   }
 
+  __isEmptyObject(object) {
+    return JSON.stringify(object) === '{}';
+  }
+
+  __parseInt(value) {
+    return parseInt(value, 10);
+  }
+
   setProportions() {
     const { width } = this.container.getBoundingClientRect();
-    const paddingLeft = parseInt(window.getComputedStyle(this.container).paddingLeft, 10) || 0;
-    const paddingRight = parseInt(window.getComputedStyle(this.container).paddingRight, 10) || 0;
+    const paddingLeft = parseInt(window.getComputedStyle(this.container).paddingLeft, 10);
+    const paddingRight = parseInt(window.getComputedStyle(this.container).paddingRight, 10);
 
-    this.wrappedElements.forEach((element, index, array) => {
-      element.style.width = this.options.swipe
+    this.__slides.forEach((slide) => {
+      slide.style.width = this.options.swipe
         ? `${Math.floor(width - (width * 0.25))}px`
-        : element.style.width = `${width - paddingLeft - paddingRight}px`;
+        : slide.style.width = `${width - paddingLeft - paddingRight}px`;
 
-      if (index !== array.length - 1) element.style.marginRight = `${paddingRight}px`;
+      slide.style.marginRight = `${paddingRight}px`;
     });
 
-    this.wrapper.style.width = `${this.wrappedElements.reduce((acc, element) => {
-      const marginRight = parseInt(element.style.marginRight, 10) || 0;
+    this.content.style.width = `${this.__slides.reduce((acc, slide) => {
+      const width = parseInt(slide.style.width, 10);
+      const marginRight = parseInt(slide.style.marginRight, 10);
 
-      acc += parseInt(element.style.width, 10) + marginRight;
+      acc += width + marginRight;
+
       return acc;
     }, 0)}px`;
+
+    return parseInt(this.content.style.width, 10);
   }
 
   // Append wrapper to slides, based on perview
-  getManagedContent() {
-    const managedContent = this.elements.reduce((content, item, index) => {
+  createSlides() {
+    const slides = this.elements.reduce((content, item, index) => {
       const element = Math.floor(index / this.options.perview);
 
       if (!content[element]) {
         const fragment = document.createElement('div');
 
-        fragment.classList.add(CAROUSEL_CONTENT);
+        fragment.classList.add(this.selectors.slide);
 
         content[element] = fragment;
       }
@@ -121,28 +137,26 @@ class Carousel {
       return content;
     }, []);
 
-    return managedContent;
+    return slides;
   }
 
-  renderingManagedContent() {
-    this.wrappedElements = this.getManagedContent();
-
-    if (this.wrapper.children) this.wrapper.innerHTML = '';
-
-    this.wrappedElements.forEach((element) => this.wrapper.append(element));
+  renderingSlides() {
+    if (this.content.children) this.content.innerHTML = '';
+    this.__slides.forEach((element) => this.content.append(element));
   }
 
   // Create navigation
-  createIndicators(elements, perview, selector = CAROUSEL_INDICATOR) {
-    const indicatorsCount = Math.ceil(elements.length / perview);
+  createIndicators() {
     const indicators = [];
 
-    for (let i = 0; i < indicatorsCount; i++) {
+    for (let i = 0; i < this.__slidesCount; i++) {
       const indicator = document.createElement('div');
-      indicator.classList.add(selector);
+      indicator.classList.add(this.selectors.indicator);
 
       indicators.push(indicator);
     }
+
+    indicators[this.__currentSlide].classList.add('is-active');
 
     return indicators;
   }
@@ -165,8 +179,7 @@ class Carousel {
     indicators.classList.add('carousel__indicators');
 
     this.indicators.forEach((indicator) => indicators.append(indicator));
-
-    this.wrapper.insertAdjacentElement('afterend', indicators);
+    this.content.insertAdjacentElement('afterend', indicators);
   }
 
   renderingTogglers() {
@@ -175,14 +188,12 @@ class Carousel {
 
   // MediaQueries
   getMediaQueries(breakpoints) {
-    const mediaQueries = Object.keys(breakpoints).reduce((acc, breakpoint, index, array) => {
+    return Object.keys(breakpoints).reduce((acc, breakpoint, index, array) => {
       if (index === array.length - 1) acc[breakpoint] = [+breakpoint, 1920];
       else acc[breakpoint] = [+breakpoint, +array[index + 1]];
 
       return acc;
     }, {});
-
-    return mediaQueries;
   }
 
   getCurrentDevice(mediaQueries) {
@@ -195,8 +206,53 @@ class Carousel {
     return device;
   }
 
+  prevElement(event, index = 1) {
+    this.__currentSlide -= index;
+
+    if (this.__currentSlide < 0) this.__currentSlide = this.__slidesCount - 1;
+    if (!this.options.loop) {
+      this.switchTogglers();
+      this.switchIndicators();
+    }
+    this.content.style.transition = '.7s ease-in-out';
+    this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
+  }
+
+  nextElement(event, index = 1) {
+    this.__currentSlide += index;
+
+    if (this.__currentSlide === this.__slidesCount) this.__currentSlide = 0;
+    if (!this.options.loop) {
+      this.switchTogglers();
+      this.switchIndicators();
+    }
+    this.content.style.transition = '.7s ease-in-out';
+    this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
+  }
+
+  switchIndicators() {
+    this.indicators.forEach((indicator) => indicator.classList.remove('is-active'));
+    this.indicators[this.__currentSlide].classList.add('is-active');
+  }
+
+  switchTogglers() {
+    if (this.__currentSlide === 0) {
+      this.__disableToggler(this.togglers.prev, this.prevElement);
+    }
+    if (this.__currentSlide === this.__slidesCount - 1) {
+      this.__disableToggler(this.togglers.next, this.nextElement);
+    }
+  }
+
+  changeElement(index) {
+    this.__currentSlide = index;
+    this.switchIndicators.call(this);
+    this.content.style.transform = `translateX(-${this.__width / this.__slidesCount * this.__currentSlide}px)`;
+  }
+
   reinitialize() {
-    this.renderingManagedContent();
+    this.__slides = this.createSlides();
+    this.renderingSlides(this.__slides);
   }
 
   initialize() {
@@ -204,7 +260,7 @@ class Carousel {
       this.__mediaQueries = this.getMediaQueries(this.breakpoints);
       this.__device = this.getCurrentDevice(this.__mediaQueries);
 
-      this.__updateOptions(this.options, this.breakpoints[this.__device]);
+      this.__updateOptions(this.breakpoints[this.__device]);
 
       window.addEventListener('resize', () => {
         const currentDevice = this.getCurrentDevice(this.__mediaQueries);
@@ -212,24 +268,41 @@ class Carousel {
         if (this.__device !== currentDevice) {
           this.__device = currentDevice;
 
-          this.__updateOptions(this.options, this.breakpoints[this.__device]);
+          this.__updateOptions(this.breakpoints[this.__device]);
           this.reinitialize();
         }
 
-        this.setProportions();
+        this.__slidesLineWidth = this.setProportions();
       });
     }
 
-    this.renderingManagedContent();
+    this.__currentSlide = 0;
+    this.__slides = this.createSlides();
+    this.__slidesCount = this.__slides.length;
 
-    this.__currentElement = 0;
-    this.__elementsCount = this.wrappedElements.length;
+    this.renderingSlides(this.__slides);
+    this.__slidesLineWidth = this.setProportions();
 
-    this.setProportions();
+    if (this.__slidesCount <= 1) this.__disableNavigation();
 
-    if (this.__elementsCount <= 1) this.__disableNavigation();
+    if (this.options.indicators) {
+      this.indicators = this.createIndicators();
+      this.renderingIndicators();
+      this.__enableIndicators();
+    }
 
-    if (this.options.pagination) this.renderingPagination(this.indicators);
+    if (this.options.togglers && !this.togglers) {
+      this.togglers = {
+        prev: this.createToggler(this.selectors.togglers.prev, 'arrow-left'),
+        next: this.createToggler(this.selectors.togglers.next, 'arrow-right'),
+      };
+      this.renderingTogglers();
+    }
+
+    if (this.options.togglers) {
+      this.__enableToggler(this.togglers.prev, this.prevElement.bind(this));
+      this.__enableToggler(this.togglers.next, this.nextElement.bind(this));
+    }
   }
 }
 

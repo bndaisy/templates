@@ -1,0 +1,17 @@
+.carousel
+  &__slide
+    display: flex
+
+    &:not(:last-of-type)
+      margin-right: 1rem
+
+
+@media all and ( min-width: 1024px )
+  .carousel
+    &__slide
+      display: grid
+      grid-template-columns: repeat(19, 1fr)
+      grid-gap: 1rem
+
+
+

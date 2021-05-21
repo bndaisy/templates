@@ -51,6 +51,8 @@ const carousel = new Carousel('carousel__container', {
       togglers: true,
       perview: 4,
       swipe: false,
+      indicators: true,
+      loop: false,
     },
   },
   togglers: {

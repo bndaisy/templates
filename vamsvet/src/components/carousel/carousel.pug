@@ -2,7 +2,7 @@ mixin carousel(parent, { title, slides, togglers })
   article.carousel(class = `${parent}__carousel`)
     h2.carousel__title= title
     .carousel__container
-      .carousel__wrapper
+      .carousel__content
         each slide in slides
           +project-card('carousel', slide)
 
