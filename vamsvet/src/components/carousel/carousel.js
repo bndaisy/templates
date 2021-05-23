@@ -43,6 +43,13 @@ class Carousel {
 
     // Set breakpoints
     if (!this.__isEmptyObject(settings.breakpoints)) this.__createObject('breakpoints', settings.breakpoints);
+
+    // ! Убрать в приватные методы
+    this.prevSlide = this.prevSlide.bind(this);
+    this.nextSlide = this.nextSlide.bind(this);
+    this.swipeSlide = this.swipeSlide.bind(this);
+    this.startSwipe = this.startSwipe.bind(this);
+    this.stopSwipe = this.stopSwipe.bind(this);
   }
 
   __createObject(object, config) {
@@ -65,16 +72,15 @@ class Carousel {
   }
 
   __enableToggler(toggler, callback) {
-    toggler.addEventListener('click', callback);
+    toggler.addEventListener('click', callback, false);
   }
 
   __disableToggler(toggler, listener) {
-    toggler.removeEventListener('click', listener);
-    console.log('ok')
+    toggler.removeEventListener('click', listener, false);
   }
 
   __enableIndicators() {
-    this.indicators.forEach((indicator, index) => indicator.addEventListener('click', () => this.changeElement(index)));
+    this.indicators.forEach((indicator, index) => indicator.addEventListener('click', () => this.changeCurrentSlide(index)));
   }
 
   findElement(selector, element = document.documentElement) {
@@ -88,10 +94,6 @@ class Carousel {
 
   __isEmptyObject(object) {
     return JSON.stringify(object) === '{}';
-  }
-
-  __parseInt(value) {
-    return parseInt(value, 10);
   }
 
   setProportions() {
@@ -206,28 +208,20 @@ class Carousel {
     return device;
   }
 
-  prevElement(event, index = 1) {
-    this.__currentSlide -= index;
+  prevSlide(event, index = 1) {
+    if (!this.options.loop && this.__currentSlide) {
+      this.__currentSlide -= index;
 
-    if (this.__currentSlide < 0) this.__currentSlide = this.__slidesCount - 1;
-    if (!this.options.loop) {
-      this.switchTogglers();
-      this.switchIndicators();
+      this.changeCurrentSlide(this.__currentSlide);
     }
-    this.content.style.transition = '.7s ease-in-out';
-    this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
   }
 
-  nextElement(event, index = 1) {
-    this.__currentSlide += index;
+  nextSlide(event, index = 1) {
+    if (!this.options.loop && this.__currentSlide < this.__slidesCount - 1) {
+      this.__currentSlide += index;
 
-    if (this.__currentSlide === this.__slidesCount) this.__currentSlide = 0;
-    if (!this.options.loop) {
-      this.switchTogglers();
-      this.switchIndicators();
+      this.changeCurrentSlide(this.__currentSlide);
     }
-    this.content.style.transition = '.7s ease-in-out';
-    this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
   }
 
   switchIndicators() {
@@ -235,24 +229,81 @@ class Carousel {
     this.indicators[this.__currentSlide].classList.add('is-active');
   }
 
-  switchTogglers() {
-    if (this.__currentSlide === 0) {
-      this.__disableToggler(this.togglers.prev, this.prevElement);
-    }
-    if (this.__currentSlide === this.__slidesCount - 1) {
-      this.__disableToggler(this.togglers.next, this.nextElement);
-    }
+  changeCurrentSlide(index) {
+    this.__currentSlide = index;
+
+    if (this.options.indicators) this.switchIndicators();
+
+    this.content.style.transition = '.5s ease-in-out';
+    this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
   }
 
-  changeElement(index) {
-    this.__currentSlide = index;
-    this.switchIndicators.call(this);
-    this.content.style.transform = `translateX(-${this.__width / this.__slidesCount * this.__currentSlide}px)`;
+  __enableSwipe() {
+    this.moving = false;
+    this.content.addEventListener('pointerdown', this.startSwipe);
+    window.addEventListener('pointerup', this.stopSwipe);
+    window.addEventListener('pointercancel', this.stopSwipe);
+  }
+
+  __disableSwipe() {
+    this.content.removeEventListener('pointerdown', this.startSwipe);
+    window.removeEventListener('pointerup', this.stopSwipe);
+    window.removeEventListener('pointercancel', this.stopSwipe);
+  }
+
+  startSwipe(event) {
+    this.isSwipped = false;
+    this.initialPosition = event.pageX;
+
+    window.addEventListener('pointermove', this.swipeSlide);
+  }
+
+  stopSwipe() {
+    window.removeEventListener('pointermove', this.swipeSlide);
+  }
+
+  swipeSlide(event) {
+    // ! Свайп дергает экран, выяснить почему и пофиксить
+    this.currentPosition = event.pageX;
+
+    const shift = this.currentPosition - this.initialPosition;
+
+    if (!this.isSwipped && shift < -30) {
+      this.nextSlide();
+      this.isSwipped = true;
+    }
+
+    if (!this.isSwipped && shift > 30) {
+      this.prevSlide();
+      this.isSwipped = true;
+    }
   }
 
   reinitialize() {
     this.__slides = this.createSlides();
     this.renderingSlides(this.__slides);
+
+    if (!this.options.togglers) {
+      this.findElement(this.selectors.togglers.prev, this.container)?.remove();
+      this.findElement(this.selectors.togglers.next, this.container)?.remove();
+    } else {
+      this.renderingTogglers();
+      this.__enableToggler(this.togglers.prev, this.prevSlide);
+      this.__enableToggler(this.togglers.next, this.nextSlide);
+    }
+
+    if (!this.options.indicators) this.findElement('carousel__indicators', this.container)?.remove();
+    else if (this.indicators) {
+      this.renderingIndicators();
+      this.__enableIndicators();
+    } else {
+      this.indicators = this.createIndicators();
+      this.renderingIndicators();
+      this.__enableIndicators();
+    }
+
+    if (!this.options.swipe) this.__disableSwipe();
+    else this.__enableSwipe();
   }
 
   initialize() {
@@ -271,8 +322,9 @@ class Carousel {
           this.__updateOptions(this.breakpoints[this.__device]);
           this.reinitialize();
         }
-
         this.__slidesLineWidth = this.setProportions();
+
+        if (this.options.swipe) this.__swipeShift = -(this.__slidesLineWidth / this.__slidesCount);
       });
     }
 
@@ -282,6 +334,8 @@ class Carousel {
 
     this.renderingSlides(this.__slides);
     this.__slidesLineWidth = this.setProportions();
+
+    if (this.options.swipe) this.__swipeShift = -(this.__slidesLineWidth / this.__slidesCount);
 
     if (this.__slidesCount <= 1) this.__disableNavigation();
 
@@ -300,9 +354,12 @@ class Carousel {
     }
 
     if (this.options.togglers) {
-      this.__enableToggler(this.togglers.prev, this.prevElement.bind(this));
-      this.__enableToggler(this.togglers.next, this.nextElement.bind(this));
+      this.__enableToggler(this.togglers.prev, this.prevSlide);
+      this.__enableToggler(this.togglers.next, this.nextSlide);
     }
+
+    if (!this.options.swipe) this.__disableSwipe();
+    else this.__enableSwipe();
   }
 }
 
