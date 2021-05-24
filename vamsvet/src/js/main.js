@@ -53,7 +53,6 @@ const carousel = new Carousel('carousel__container', {
       perview: 4,
       swipe: false,
       indicators: false,
-      loop: false,
     },
   },
   togglers: {
@@ -61,7 +60,3 @@ const carousel = new Carousel('carousel__container', {
     next: 'button--toggler-right',
   },
 });
-
-carousel.initialize();
-
-console.log(carousel)

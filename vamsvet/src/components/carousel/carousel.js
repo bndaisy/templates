@@ -8,9 +8,6 @@ class Carousel {
     this.options = {
       togglers: false,
       indicators: false,
-      loop: false,
-      autoplay: false,
-      delay: 5000,
       swipe: false,
       perview: 1,
     };
@@ -44,12 +41,13 @@ class Carousel {
     // Set breakpoints
     if (!this.__isEmptyObject(settings.breakpoints)) this.__createObject('breakpoints', settings.breakpoints);
 
-    // ! Убрать в приватные методы
     this.prevSlide = this.prevSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.swipeSlide = this.swipeSlide.bind(this);
     this.startSwipe = this.startSwipe.bind(this);
     this.stopSwipe = this.stopSwipe.bind(this);
+
+    this.initialize();
   }
 
   __createObject(object, config) {
@@ -83,6 +81,23 @@ class Carousel {
     this.indicators.forEach((indicator, index) => indicator.addEventListener('click', () => this.changeCurrentSlide(index)));
   }
 
+  __enableSwipe() {
+    this.moving = false;
+    this.content.addEventListener('pointerdown', this.startSwipe);
+    window.addEventListener('pointerup', this.stopSwipe);
+    window.addEventListener('pointercancel', this.stopSwipe);
+  }
+
+  __disableSwipe() {
+    this.content.removeEventListener('pointerdown', this.startSwipe);
+    window.removeEventListener('pointerup', this.stopSwipe);
+    window.removeEventListener('pointercancel', this.stopSwipe);
+  }
+
+  __isEmptyObject(object) {
+    return JSON.stringify(object) === '{}';
+  }
+
   findElement(selector, element = document.documentElement) {
     return element.querySelector(`.${selector}`);
   }
@@ -90,10 +105,6 @@ class Carousel {
   findElements(selector, element = document.documentElement) {
     if (!selector) return false;
     return [...element.querySelectorAll(`.${selector}`)];
-  }
-
-  __isEmptyObject(object) {
-    return JSON.stringify(object) === '{}';
   }
 
   setProportions() {
@@ -208,20 +219,19 @@ class Carousel {
     return device;
   }
 
+  // Move
   prevSlide(event, index = 1) {
-    if (!this.options.loop && this.__currentSlide) {
-      this.__currentSlide -= index;
+    if (!this.__currentSlide) return;
 
-      this.changeCurrentSlide(this.__currentSlide);
-    }
+    this.__currentSlide -= index;
+    this.changeCurrentSlide(this.__currentSlide);
   }
 
   nextSlide(event, index = 1) {
-    if (!this.options.loop && this.__currentSlide < this.__slidesCount - 1) {
-      this.__currentSlide += index;
+    if (this.__currentSlide >= this.__slidesCount - 1) return;
 
-      this.changeCurrentSlide(this.__currentSlide);
-    }
+    this.__currentSlide += index;
+    this.changeCurrentSlide(this.__currentSlide);
   }
 
   switchIndicators() {
@@ -238,19 +248,7 @@ class Carousel {
     this.content.style.transform = `translateX(-${this.__slidesLineWidth / this.__slidesCount * this.__currentSlide}px)`;
   }
 
-  __enableSwipe() {
-    this.moving = false;
-    this.content.addEventListener('pointerdown', this.startSwipe);
-    window.addEventListener('pointerup', this.stopSwipe);
-    window.addEventListener('pointercancel', this.stopSwipe);
-  }
-
-  __disableSwipe() {
-    this.content.removeEventListener('pointerdown', this.startSwipe);
-    window.removeEventListener('pointerup', this.stopSwipe);
-    window.removeEventListener('pointercancel', this.stopSwipe);
-  }
-
+  // Swipe
   startSwipe(event) {
     this.isSwipped = false;
     this.initialPosition = event.pageX;
@@ -263,7 +261,6 @@ class Carousel {
   }
 
   swipeSlide(event) {
-    // ! Свайп дергает экран, выяснить почему и пофиксить
     this.currentPosition = event.pageX;
 
     const shift = this.currentPosition - this.initialPosition;
@@ -322,9 +319,8 @@ class Carousel {
           this.__updateOptions(this.breakpoints[this.__device]);
           this.reinitialize();
         }
-        this.__slidesLineWidth = this.setProportions();
 
-        if (this.options.swipe) this.__swipeShift = -(this.__slidesLineWidth / this.__slidesCount);
+        this.__slidesLineWidth = this.setProportions();
       });
     }
 
@@ -334,8 +330,6 @@ class Carousel {
 
     this.renderingSlides(this.__slides);
     this.__slidesLineWidth = this.setProportions();
-
-    if (this.options.swipe) this.__swipeShift = -(this.__slidesLineWidth / this.__slidesCount);
 
     if (this.__slidesCount <= 1) this.__disableNavigation();
 
