@@ -9,33 +9,35 @@
 //- Header
 -
   const header = {
-    contacts: [{
-        title: 'Интернет магазин',
-        url: '#',
-        modifier: 'secondary' },
-      {
-        title: '8 (495) 669-10-30',
-        url: 'tel:+78003335599',
-        modifier: 'base' },
-      {
-        title: 'Магазин в москве',
-        url: '#',
-        modifier: 'primary' }],
-    navigation: [{
-        title: 'Наши решения',
-        url: '#' },
-      {
-        title: 'Преимущества',
-        url: `#` },
-      {
-        title: 'Проекты дизайнеров',
-        url: '#' },
-      {
-        title: 'Как работаем',
-        url: '#' },
-      {
-        title: 'Контакты',
-        url: '#' }],
+    contacts: {
+      links: [{
+          title: 'Интернет магазин',
+          url: '#',
+          modifier: 'secondary' },
+        {
+          title: '8 (495) 669-10-30',
+          url: 'tel:+78003335599',
+          modifier: 'base' },
+        {
+          title: 'Магазин в москве',
+          url: '#',
+          modifier: 'primary' }]},
+    navigation: {
+      links: [{
+          title: 'Наши решения',
+          url: '#' },
+        {
+          title: 'Преимущества',
+          url: `#` },
+        {
+          title: 'Проекты дизайнеров',
+          url: '#' },
+        {
+          title: 'Как работаем',
+          url: '#' },
+        {
+          title: 'Контакты',
+          url: '#' }]},
     button: {
       content: 'Войти',
       icon: {
@@ -387,6 +389,59 @@
     button: {
         content: 'Поделиться проектом',
         modifier: 'accent' }};
+
+//- Footer
+-
+  const footer = {
+    main: {
+      headline: 'Магазин на варшавке',
+      links: [
+        {
+          title: 'Каталог',
+          url: '#' },
+        {
+          title: 'Фото магазина',
+          url: '#' },
+        {
+          title: 'Адрес',
+          url: '#'}]},
+    shop: {
+      headline: 'Интернет-магазин',
+      links: [
+        {
+          title: 'Люстры',
+          url: '#' },
+        {
+          title: 'Светильники',
+          url: '#' }]},
+    help: {
+      headline: 'Помощь',
+      links: [
+        {
+          title: 'Доставка',
+          url: '#' }]},
+    service: {
+      headline: 'Услуги',
+      links: [
+        {
+          title: 'Установка светильников',
+          url: '#' },
+        {
+          title: 'Подбор по фото',
+          url: '#' }]},
+    about: {
+      headline: 'О компании',
+      links: [
+        {
+          title: 'Контакты',
+          url: '#' },
+        {
+          title: 'Реквизиты',
+          url: '#' },
+        {
+          title: 'Новости',
+          url: '#'}]}
+  };
 
 //- Register popup
 -

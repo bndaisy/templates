@@ -1,15 +1,33 @@
 .nav
   &__link
     display: block
-
-    +font(20, 20, 700)
     color: $palette__text--primary
-    text-transform: uppercase
 
-    padding: 1rem 0
+.header
+  .nav
+    &__link
+      +font(20, 20, 700)
+      text-transform: uppercase
+      padding: 1rem 0
 
+
+.footer
+  .nav
+    &__link
+      +font(14, 14, 400)
+      padding: .25rem 0
+
+
+@media all and ( min-width: 768px )
+  .footer
+    .nav
+      &__link
+        padding: .5rem 0
 
 @media all and ( min-width: 1024px )
+  .nav__link
+    transition: $transition__speed--medium
+
   .nav--contacts
     .nav
       &__link
@@ -20,17 +38,10 @@
       &__link
         +font(14, 14, 500)
         color: $palette__text--secondary
-
         padding: 1rem .5rem
-
-        transition: $transition__speed--medium
 
         &:hover
           color: $palette__accent--secondary
-
-  .nav__item
-    .nav__link
-      transition: $transition__speed--medium
 
   .nav__item
     &--primary,
@@ -38,12 +49,13 @@
       .nav__link
         padding: 0.25rem .5rem
 
-    &--primary
+    &--primary,
+    &--base
       .nav__link
-        color: $palette__accent--primary
+        color: $palette__text--accent-primary
 
         &:hover
-          color: darken($palette__accent--primary, 15%)
+          color: darken($palette__text--accent-primary, 15%)
 
     &--secondary
       .nav__link
@@ -54,11 +66,13 @@
 
     &--base
       .nav__link
-        color: $palette__text--primary
         padding: 1rem 1.25rem
 
+  .footer
+    .nav
+      &__link
         &:hover
-          color: darken($palette__text--primary, 15%)
+          color: $palette__text--accent-primary
 
 
 @media all and ( min-width: 1440px )

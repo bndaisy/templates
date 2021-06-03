@@ -1,0 +1,16 @@
+.footer
+  &__link
+    color: $palette__text--primary
+
+    &[href*=mailto]
+      +font(14, 14, 400)
+    &:not([href*=mailto])
+      +font(14, 14, 700)
+      margin-right: 0.5rem
+
+@media all and ( min-width: 1024px )
+  .footer
+    &__link
+      transition: $transition__speed--medium
+      &:hover
+        color: $palette__accent--secondary

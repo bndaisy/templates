@@ -1,5 +1,7 @@
-mixin nav(parent, links)
+mixin nav(parent, { headline, links })
   nav.nav(class = `${parent}__nav`)&attributes(attributes)
+    if (headline)
+      h3.nav__headline= headline
     ul.nav__list
       each link in links
         li.nav__item&attributes({'class': link.modifier ? `nav__item--${link.modifier}` : ''})

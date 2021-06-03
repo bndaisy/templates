@@ -3,7 +3,7 @@ extends ../components/__system/layout/default
 //- Вынести эти зависимости в отдельный файл!
 include ../components/header/header
 include ../components/content/content
-
+include ../components/footer/footer
 
 include ../components/banner/banner
 include ../components/solutions/solutions
@@ -30,7 +30,7 @@ block styles
 
 block body
   +header(page)
-    a.header__contacts-menu(href = `${header.contacts[1].url}`)
+    a.header__contacts-menu(href = `${header.contacts.links[1].url}`)
       +icon(path, 'header', 'call')
     +logo('header', path)
       +icon('/', 'header', 'logo')
@@ -51,6 +51,18 @@ block body
     +carousel('content', carousel)
       p.carousel__textline Если вы хотите, чтобы мы опубликовали ваш проект у себя на сайте, — расскажите нам о нем и пришлите фото!
       +button('carousel', carousel.button)
+
+  +footer(page)
+    each navigation in footer
+      +nav('footer', navigation)
+    .footer__contacts
+      .footer__inner
+        a.footer__link(href='tel:+74956691030') 8 (495) 669-10-30
+        span.footer__description г. Москва
+      .footer__inner
+        a.footer__link(href='tel:+78001007580') 8 (800) 100-75-80
+        span.footer__description Бесплатно по России
+      a.footer__link(href='mailto:info@vamsvet.ru') info@vamsvet.ru
 
   +popup(page)
     +form('popup', register)
