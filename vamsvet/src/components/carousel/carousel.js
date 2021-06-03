@@ -86,6 +86,7 @@ class Carousel {
     this.content.addEventListener('pointerdown', this.startSwipe);
     window.addEventListener('pointerup', this.stopSwipe);
     window.addEventListener('pointercancel', this.stopSwipe);
+    window.addEventListener('pointerover', (event) => event.preventDefault());
   }
 
   __disableSwipe() {

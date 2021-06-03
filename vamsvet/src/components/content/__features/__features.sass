@@ -3,11 +3,17 @@
     display: grid
     grid-template-columns: repeat(2, 1fr)
 
-    padding: 0 1rem
+    padding: 2rem 1rem
     max-width: 73.125rem
     width: 100%
 
     justify-self: center
+
+
+@media all and ( min-width: 360px )
+  .content
+    &__features
+      padding: 0 1rem
 
 
 @media all and ( min-width: 768px )
