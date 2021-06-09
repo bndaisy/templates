@@ -1,0 +1,14 @@
+=font($font-size-min, $font-size-max, $font-weight, $line-height: normal, $letter-spacing: normal)
+  font-size: $font-size-min + px
+  font-weight: $font-weight
+  line-height: $line-height
+  letter-spacing: $letter-spacing
+
+  @media all and ( min-width: 360px )
+    $font-size-step: $font-size-max - $font-size-min
+    $font-size: calc(#{ $font-size-min + px } + #{ $font-size-step } * (100vw - 360px) / (1440 - 360))
+
+    font-size: $font-size
+
+  @media all and (min-width: 1440px)
+    font-size: $font-size-max + px

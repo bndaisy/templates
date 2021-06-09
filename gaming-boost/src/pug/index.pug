@@ -1,0 +1,24 @@
+extends ../components/__system/layout/default
+
+include ../components/header/header
+include ../components/content/content
+include ../components/footer/footer
+
+include ../components/logo/logo
+include ../components/nav/nav
+
+
+block head
+  include ../components/page/home-page/variables
+
+block styles
+  link(rel="stylesheet", href="css/main.min.css")
+
+block body
+  +header(page)
+    +logo('header', path)
+    +nav('header', header.navigation)
+    +nav('header', header.user)&attributes({'class': 'nav--user'})
+
+
+  script(src='js/main.js')
