@@ -1,0 +1,21 @@
+.home-page
+  &__header
+    position: relative
+    display: flex
+    justify-content: center
+    width: 100%
+
+    background-color: $palette__background--accent
+
+    &::after
+      content: ''
+
+      position: absolute
+      top: calc(100% - 1.5rem)
+      left: 0
+
+      pointer-events: none
+
+      width: 100%
+      height: 4rem
+      background: url('../images/header/header__img--background.webp')

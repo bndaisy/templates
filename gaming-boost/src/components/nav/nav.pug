@@ -4,3 +4,4 @@ mixin nav(parent, { headline, links })
       each link in links
         li.nav__item&attributes({'class': link.modifier ? `nav__item--${link.modifier}` : ''})
           a.nav__link(href = `${link.url}`)= link.title
+    block

@@ -6,6 +6,7 @@ include ../components/footer/footer
 
 include ../components/logo/logo
 include ../components/nav/nav
+include ../components/burger-menu/burger-menu
 
 
 block head
@@ -17,8 +18,10 @@ block styles
 block body
   +header(page)
     +logo('header', path)
-    +nav('header', header.navigation)
+    +nav('header', header.navigation)&attributes({'class': 'nav--main'})
     +nav('header', header.user)&attributes({'class': 'nav--user'})
+    //- icon
+    +burger-menu('header')
 
 
   script(src='js/main.js')

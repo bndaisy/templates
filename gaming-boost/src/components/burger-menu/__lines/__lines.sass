@@ -1,0 +1,30 @@
+.burger-menu
+  &__lines
+    display: block
+    position: relative
+
+    width: 1.625rem
+    height: .125rem
+
+    background-color: $palette__icon--primary
+    border-radius: .5rem
+
+    &::before,
+    &::after
+      content: ''
+      display: block
+      position: absolute
+
+      width: 2rem
+      height: .125rem
+
+      background-color: $palette__icon--primary
+      border-radius: .5rem
+
+      transition: all .2s ease-in-out
+
+    &::after
+      top: -10px
+
+    &::before
+      bottom: -10px
