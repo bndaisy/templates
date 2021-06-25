@@ -1,0 +1,17 @@
+mixin carousel(parent, { slides, togglers })
+  article.carousel(class = `${parent}__carousel`)
+    .carousel__container.swiper-container
+      .carousel__wrapper.swiper-wrapper
+        each slide in slides
+          .carousel__slide.swiper-slide
+            img.carousel__img(src=`${slide.image.path}/carousel__img--${slide.image.modifier}.${slide.image.type}` alt=`${slide.image.alt}`)
+            .carousel__content
+              span.carousel__headline= slide.content.headline
+              span.carousel__subheadline= slide.content.subheadline
+              span.carousel__textline= slide.content.textline
+              +button('carousel', slide.content.button)
+            .carousel__mask
+
+    .carousel__pagination
+    +button('carousel', togglers.left)
+    +button('carousel', togglers.right)

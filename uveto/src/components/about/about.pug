@@ -1,0 +1,27 @@
+mixin about(parent)
+  article.about(class=`${parent}__about`)
+    .about__container
+      h1.about__title Магазин рукоделия и творчества
+      .about__text.about__text--margin-bottom Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, leo ut dui, tortor pellentesque. Nullam scelerisque hendrerit volutpat dui consectetur eleifend. Diam auctor viverra ac suspendisse viverra risus. Tortor erat aliquam sollicitudin dolor ornare. Dignissim urna, habitant tincidunt nunc, iaculis enim. Viverra id ut aenean habitant in nulla. Tincidunt ornare vivamus amet faucibus. Porta amet ultrices sit pellentesque massa lorem nunc. Vitae aenean diam lacus pharetra vitae. Elit at non varius orci. Purus et, purus dui massa erat risus, volutpat mi semper.
+      .about__subtitle Почему выбирают нас?
+      .about__features
+        ul.about__list
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Мы с удовольствием поощряем наших постоянных покупателей и оптовиков накопительными скидками
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Мы работаем напрямую с поставщиками и это позволяет нам формировать демократичный ценовой диапазон
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Более 100 000 наименований товаров даже самые привередливые найдут товары себе по душе
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Если вы получили некачественный товар то мы сразу же обменяем товар или вернем вам деньги
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Пластиковые карты Visa и MasterCard, Яндекс.Деньги и безналичные переводы
+          li.about__item
+            +icon(path, 'about', 'check')
+            .about__text Даже если доставка в ваш регион ограничена мы найдем другую службу доставки в ручную
+      .about__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, leo ut dui, tortor pellentesque. Nullam scelerisque hendrerit volutpat dui consectetur eleifend. Diam auctor viverra ac suspendisse viverra risus. Tortor erat aliquam sollicitudin dolor ornare. Dignissim urna, habitant tincidunt nunc, iaculis enim. Viverra id ut aenean habitant in nulla. Tincidunt ornare vivamus amet faucibus..

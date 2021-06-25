@@ -1,0 +1,28 @@
+mixin widgets(parent)
+  article.widgets(class=`${parent}__widgets`)
+    .widgets__container
+      section.widgets__news
+        h2.widgets__title Новости
+        figure.prw-news.widgets__prw-news
+          a.prw-news__wrapper(href='#')
+            img.prw-news__img(src=`images/news/news__img--first.webp` alt='Первая новость')
+            .prw-news__date
+              span.prw-news__day 28
+              span.prw-news__month апр
+            figcaption.prw-news__content
+              h2.prw-news__title Крайне важная новость
+              p.prw-news__text Крайне важный текст для новости, который понравится всем и вызовет позитивные эмоции
+      section.widgets__blog
+        h2.widgets__title Кладовка идей
+        figure.prw-blog.widgets__prw-blog
+          a.prw-blog__wrapper(href='#')
+            img.prw-blog__img(src=`images/blog/blog__img--first.webp` alt='Первая запись')
+            figcaption.prw-blog__content
+              h2.prw-blog__title Крайне важная запись
+              p.prw-blog__text Крайне важный текст для записи, который понравится всем и вызовет позитивные эмоции
+        figure.prw-blog.widgets__prw-blog
+          a.prw-blog__wrapper(href='#')
+            img.prw-blog__img(src=`images/blog/blog__img--second.webp` alt='Вторая запись')
+            figcaption.prw-blog__content
+              h2.prw-blog__title Крайне важная запись
+              p.prw-blog__text Крайне важный текст для записи, который понравится всем и вызовет позитивные эмоции

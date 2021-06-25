@@ -1,0 +1,14 @@
+mixin catalog(parent, categories)
+  .catalog(class = `${parent}__catalog`)
+    .catalog__toggler
+      +icon(path, 'catalog', 'catalog')
+      = 'Каталог'
+    ul.catalog__categories
+      each category in categories
+        li.catalog__category
+          a.catalog__link(href = `${category.url}`)= category.title
+          if(category.dropdown)
+            ul.catalog__dropdown
+              each element in category.dropdown
+                a.catalog__link(href = `${element.url}`)= element.title
+

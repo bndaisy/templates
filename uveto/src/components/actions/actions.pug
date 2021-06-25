@@ -1,0 +1,5 @@
+mixin actions(parent, actions)
+  .actions(class=`${parent}__actions`)
+    each action in actions
+      a.actions__action(role=`${action.role}`, aria-label=`${action.aria}`, href=`${action.url}`)
+        +icon(path, 'actions', `${action.icon}`)

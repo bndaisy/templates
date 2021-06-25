@@ -1,0 +1,27 @@
+.nav
+  &__link
+    display: block
+
+.nav--contacts
+  .nav
+    &__link
+      +font(12, 12, 400)
+      color: $palette__text--secondary
+      padding: .5rem 1rem
+
+.nav--navigation
+  .nav
+    &__link
+      +font(16, 16, 500)
+      color: $palette__text--primary
+      text-transform: uppercase
+      padding: .5rem 1rem
+
+
+@media all and ( min-width: 1024px )
+  .nav
+    &__link
+      transition: $transition__speed--medium
+      &:hover
+        color: $palette__text--accent
+

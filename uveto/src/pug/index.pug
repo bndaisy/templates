@@ -1,0 +1,60 @@
+extends ../components/__system/layout/default
+
+include ../components/header/header
+include ../components/page/home-page/__header/includes
+
+include ../components/content/content
+include ../components/footer/footer
+
+include ../components/carousel/carousel
+include ../components/tabs/tabs
+include ../components/events/events
+include ../components/widgets/widgets
+include ../components/about/about
+
+include ../components/nav/nav
+include ../components/icon/icon
+include ../components/button/button
+include ../components/burger-menu/burger-menu
+include ../components/card/card
+
+
+block head
+  include ../components/page/home-page/variables
+
+block styles
+  link(rel="stylesheet", href="https://unpkg.com/swiper/swiper-bundle.min.css")
+  link(rel="stylesheet", href="css/main.min.css")
+
+block body
+  +header(page)
+    .header__top
+      .header__container
+        +nav('header', header.contacts)&attributes({'class': 'nav--contacts'})
+        +information('header', header.information)
+        a.header__user-nav.mfp-auth(role='Auth', aria-label='Auth' href='#', data-mfp-src="#auth") Личный кабинет
+    .header__bottom
+      .header__container
+        +logo('header', path)
+          +icon(path, 'header', 'logo-header')
+        +nav('header', header.navigation)&attributes({'class': 'nav--navigation'})
+        +catalog('header', header.catalog)
+        +search('header', header.search)
+        +actions('header', header.actions)
+  +content(page)
+    +carousel('content', carousel)
+    article.features.content__features
+      +tabs('features', tabs.nav)
+        each tab in tabs.nav
+          .tabs__element(class=`${tab.name}`)&attributes({'class': tab.active ? 'is-active' :' ' })
+            +card('tabs')
+            +card('tabs')
+            +card('tabs')
+            +card('tabs')
+    +events('content', events)
+    +widgets('content')
+    +about('content')
+  +footer(page)
+
+  script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+  script(src='js/main.js')

@@ -1,0 +1,299 @@
+//- Head
+- let title = `Uveto - Главная страница`;
+- let page = `home-page`;
+- let path = `./`;
+
+
+
+//- Header
+
+-
+  const header = {
+    contacts: {
+      links: [{
+          title: 'Доставка и оплата',
+          url: '#' },
+        {
+          title: 'Контакты',
+          url: '#' }]},
+    information: {
+      phone: {
+        title: '8 499 704-2222',
+        url: 'tel:+74997042222' },
+      worktime: 'Прием заказов по телефону по будням с 10:00 до 19:00' },
+    navigation: {
+      links: [{
+          title: 'Бренды',
+          url: '#' },
+        {
+          title: 'Новости',
+          url: '#' },
+        {
+          title: 'Акции',
+          url: '#' },
+        {
+          title: 'Подарки',
+          url: '#' },
+        {
+          title: 'Скидки',
+          url: '#' },
+        {
+          title: 'Кладовка идей',
+          url: '#' }]},
+    search: {
+      current: 'Все',
+      categories: ['Все', 'Категория 1', 'Категория 2', 'Категория 3']},
+    catalog: [{
+        title: 'Вязание',
+        url: '#',
+        dropdown: [{
+            title: 'Пряжа для вязания',
+            url: '#' },
+          {
+            title: 'Инструменты и приспособления',
+            url: '#' },
+          {
+            title: 'Спицы для вязания',
+            url: '#' },
+          {
+            title: 'Крючки для вязания',
+            url: '#' },
+          {
+            title: 'Книги и журналы',
+            url: '#' }]},
+      {
+        title: 'Вышивание',
+        url: '#' },
+      {
+        title: 'Бисероплетение и макраме',
+        url: '#' },
+      {
+        title: 'Шитье',
+        url: '#' },
+      {
+        title: 'Флористика',
+        url: '#' },
+      {
+        title: 'Гравюра',
+        url: '#' },
+      {
+        title: 'Валяние',
+        url: '#' },
+      {
+        title: 'Декупаж',
+        url: '#' },
+      {
+        title: 'Лэмпворк',
+        url: '#' },
+      {
+        title: 'Ткачество',
+        url: '#' },
+      {
+        title: 'Скрапбукинг',
+        url: '#' },
+      {
+        title: 'Пэчворк',
+        url: '#' },
+      {
+        title: 'Художникам',
+        url: '#' },
+      {
+        title: 'Украшения',
+        url: '#' },
+      {
+        title: 'Инструменты',
+        url: '#' },
+      {
+        title: 'Моделирование',
+        url: '#' },
+      {
+        title: 'Изготовление игрушек',
+        url: '#' },
+      {
+        title: 'Оригами',
+        url: '#' },
+      {
+        title: 'Лепка',
+        url: '#' },
+      {
+        title: 'Квиллинг',
+        url: '#' },
+      {
+        title: 'Декорирование',
+        url: '#' },
+      {
+        title: 'Чеканка',
+        url: '#' },
+      {
+        title: 'Плетение',
+        url: '#' },
+      {
+        title: 'Мозайка',
+        url: '#' },
+      {
+        title: 'Кулинария',
+        url: '#' },
+      {
+        title: 'Игры',
+        url: '#' },
+      {
+        title: 'Прочее',
+        url: '#' }],
+    actions: [{
+        role: 'Action',
+        aria: 'Go to Favorites',
+        url: '#',
+        icon: 'favorites'},
+      {
+        role: 'Action',
+        aria: 'Go to Compare',
+        url: '#',
+        icon: 'compare'},
+      {
+        role: 'Action',
+        aria: 'Go to Cart',
+        url: '#',
+        icon: 'cart'},
+        ]
+  };
+
+-
+  const carousel = {
+    slides: [{
+        image: {
+            path: 'images/carousel',
+            modifier: 'first',
+            type: 'webp',
+            alt: 'Первый слайд'
+          },
+        content: {
+          headline: 'Лучшие товары',
+          subheadline: 'Для вашего творчества',
+          textline: 'Широкий ассортимент прямо от производителя',
+          button: {
+              content: 'Заказать',
+              modifier: 'accent',
+            }}},
+    {
+        image: {
+            path: 'images/carousel',
+            modifier: 'second',
+            type: 'webp',
+            alt: 'Второй слайд'
+          },
+        content: {
+            headline: 'Лучшие товары',
+            subheadline: 'Для вашего творчества',
+            textline: 'Широкий ассортимент прямо от производителя',
+            button: {
+                content: 'Заказать',
+                modifier: 'accent'
+              }}},
+    {
+        image: {
+            path: 'images/carousel',
+            modifier: 'third',
+            type: 'webp',
+            alt: 'Третий слайд'
+          },
+        content: {
+            headline: 'Лучшие товары',
+            subheadline: 'Для вашего творчества',
+            textline: 'Широкий ассортимент прямо от производителя',
+            button: {
+                content: 'Заказать',
+                modifier: 'accent'
+              }}},
+    {
+        image: {
+            path: 'images/carousel',
+            modifier: 'fourth',
+            type: 'webp',
+            alt: 'Четвертый слайд'
+          },
+        content: {
+            headline: 'Лучшие товары',
+            subheadline: 'Для вашего творчества',
+            textline: 'Широкий ассортимент прямо от производителя',
+            button: {
+                content: 'Заказать',
+                modifier: 'accent'
+              }}}],
+    togglers: {
+        left: {
+              content: '',
+              modifier: 'toggler-left',
+              icon: {
+                path: path,
+                name: 'chevron-left',
+                parent: 'carousel' }},
+        right: {
+            content: '',
+            modifier: 'toggler-right',
+            icon: {
+              path: path,
+              name: 'chevron-right',
+              parent: 'carousel' }}
+    }
+  };
+
+//- Tabs
+-
+  const tabs = {
+      nav: [{
+          name: 'tab__one',
+          title: 'Новые поступления',
+          active: true },
+        {
+          name: 'tab__two',
+          title: 'Бестселлеры',
+          active: false },
+        {
+          name: 'tab__three',
+          title: 'Скидки',
+          active: false}]
+  };
+
+//- Events
+-
+  const events = [{
+      image: {
+        path: 'images/events',
+        modifier: 'first',
+        type: 'webp',
+        alt: 'Первое событие'
+      },
+      date: '27.10-30.10',
+      title: 'Новогодняя распродажа',
+      text: 'распродажа на наборы для вышивания и макраме' },
+    {
+      image: {
+        path: 'images/events',
+        modifier: 'second',
+        type: 'webp',
+        alt: 'Первое событие'
+      },
+      date: '27.10-30.10',
+      title: 'Новогодняя распродажа',
+      text: 'распродажа на наборы для вышивания и макраме' },
+    {
+      image: {
+        path: 'images/events',
+        modifier: 'first',
+        type: 'webp',
+        alt: 'Первое событие'
+      },
+      date: '27.10-30.10',
+      title: 'Новогодняя распродажа',
+      text: 'распродажа на наборы для вышивания и макраме' },
+    {
+      image: {
+        path: 'images/events',
+        modifier: 'second',
+        type: 'webp',
+        alt: 'Первое событие'
+      },
+      date: '27.10-30.10',
+      title: 'Новогодняя распродажа',
+      text: 'распродажа на наборы для вышивания и макраме'
+    }];

@@ -1,0 +1,30 @@
+.widgets
+  &__container
+    padding: 2rem 1rem
+    max-width: $max-width + px
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(auto-fill, 1fr)
+    grid-template-areas: 'news' 'blog'
+    column-gap: 1rem
+    row-gap: 1rem
+
+
+@media all and (min-width: 550px)
+  .widgets
+    &__container
+      grid-template-areas: 'news news' 'blog blog'
+
+
+
+@media all and (min-width: 1024px)
+  .widgets
+    &__container
+      grid-template-areas: 'news blog blog'
+      column-gap: 2rem
+
+
+@media all and ( min-width: 1280px )
+  .widgets
+    &__container
+      padding: 2rem 0

@@ -1,0 +1,23 @@
+.search
+  &__input
+    +font(16, 16, 400)
+    color: $palette__text--primary
+
+    height: 100%
+    width: 100%
+
+    background-color: transparent
+    border: 1px solid $palette__border--primary
+    border-left: transparent
+
+    padding: 0 2.75rem 0 1rem
+
+
+@media all and ( min-width: 1024px )
+  .search
+    &__input
+      transition: $transition__speed--medium
+
+      &:focus
+        outline: none
+        border: 1px solid $palette__border--accent

@@ -1,0 +1,10 @@
+mixin search(parent, { current, categories })
+  .search(class = `${parent}__search`)
+    .search__toggler
+      +icon(path, 'search', 'chevron-down')
+      span.search__current Все
+      ul.search__categories
+        each category in categories
+          li.search__category= category
+    input.search__input(type="text")
+    +icon(path, 'search', 'search')

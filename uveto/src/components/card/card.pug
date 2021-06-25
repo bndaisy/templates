@@ -1,0 +1,31 @@
+mixin card(parent)
+  .card(class=`${parent}__card`)
+    .card__wrapper
+      a.card__img-wrapper(href='#')
+        img(src='images/card/card__img.webp', alt ='Img alt').card__img
+      .card__content
+        h2.card__title Пряжа Sadnes Garn Alpakka
+        .card__description
+          .card__subtitle Состав:
+          .card__text 100% альпака
+        .card__about
+          .card__holder
+            .card__subtitle Вес:
+            .card__text 50г
+          .card__holder
+            .card__subtitle Длина:
+            .card__text 110м
+          .card__holder
+            .card__subtitle Палитра:
+            .card__text 54 цвета
+      .card__nav
+        .card__inner
+          span.card__price 325
+          +icon(path, 'card', 'ruble')
+        .card__inner
+          a.card__action(href='#')
+            +icon(path, 'card', 'cart-add')
+          a.card__action(href='#')
+            +icon(path, 'card', 'settings')
+          a.card__action(href='#')
+            +icon(path, 'card', 'favorites')

@@ -1,0 +1,14 @@
+.card
+  &__action
+    display: block
+    &:not(:last-of-type)
+      margin-right: 0.25rem
+
+
+@media all and ( min-width: 1024px )
+  .card
+    &__action
+      transition: $transition__speed--medium
+      &:hover
+        .icon
+          fill: $palette__icon--accent

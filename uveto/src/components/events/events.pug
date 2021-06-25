@@ -1,0 +1,19 @@
+mixin events(parent, events)
+  article.events(class=`${parent}__events`)
+    .events__container
+      h2.events__title Акции
+      .events__inner
+        each event in events
+          +event('events', event)
+
+
+mixin event(parent, { image, date, title, text })
+  .event(class=`${parent}__event`)
+    .event__img-wrapper
+      img.event__img(src=`${image.path}/events__img--${image.modifier}.${image.type}` alt=`${image.alt}`)
+    .event__inner
+      span.event__date= date
+      .event__holder
+        h3.event__title= title
+        span.event__text= text
+    a.event__wrapper(href='#')

@@ -1,0 +1,21 @@
+.tabs
+  &__tab
+    +font(16, 16, 500)
+    text-transform: uppercase
+    color: $palette__text--primary
+    background-color: transparent
+    padding: 1rem
+    border: 1px solid transparent
+    &.is-active
+      color: $palette__text--accent
+      border: 1px solid $palette__border--accent
+      background-color: darken($palette__background--secondary, 1%)
+
+
+@media all and ( min-width: 1024px )
+  .tabs
+    &__tab
+      transition: $transition__speed--medium
+      &:hover
+        cursor: pointer
+        color: $palette__text--accent

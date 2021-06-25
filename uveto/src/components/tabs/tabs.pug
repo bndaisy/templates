@@ -1,0 +1,9 @@
+mixin tabs(parent, nav)
+  .tabs(class=`${parent}__tabs`)
+    .tabs__nav
+      .tabs__container
+        each tab in nav
+          .tabs__tab(class= tab.active ? 'is-active' : '', data-tab-name=`${tab.name}`)= tab.title
+    .tabs__content
+      .tabs__container
+        block

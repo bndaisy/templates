@@ -1,0 +1,28 @@
+.button
+  &--toggler-left
+    display: none
+
+
+@media all and ( min-width: 1024px )
+  .button
+    &--toggler-left
+      display: flex
+
+      position: absolute
+      z-index: 2
+      top: 45%
+      left: 7%
+
+      background-color: transparent
+      border: none
+
+      padding: 0.5rem
+
+      transition: $transition__speed--medium
+
+      &:hover
+        cursor: pointer
+        .icon--chevron-left
+          fill: $palette__icon--accent
+          fill-opacity: 1
+

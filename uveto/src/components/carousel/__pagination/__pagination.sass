@@ -1,0 +1,27 @@
+.carousel
+  &__pagination
+    position: absolute
+    z-index: 2
+    bottom: 1rem
+    left: 45%
+
+    .swiper-pagination-bullet
+      width: 2rem
+      height: 0.25rem
+      border-radius: 0
+      background-color: rgba($palette__icon--secondary, 50%)
+
+    .swiper-pagination-bullet-active
+      background-color: $palette__icon--accent
+
+
+
+@media all and ( min-width: 1024px )
+  .carousel
+    &__pagination
+      .swiper-pagination-bullet
+        &:not(:last-of-type)
+          margin-right: 0.5rem
+        &:focus
+          outline: none
+

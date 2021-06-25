@@ -1,0 +1,12 @@
+.information
+  &__call
+    +font(24, 24, 500)
+    color: $palette__text--secondary
+
+
+@media all and ( min-width: 1024px )
+  .information
+    &__call
+      transition: $transition__speed--medium
+      &:hover
+        color: $palette__text--accent

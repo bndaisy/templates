@@ -1,0 +1,69 @@
+.widgets
+  &__news
+    grid-area: news
+
+
+.prw-news
+  width: 100%
+  height: 360px
+  overflow: hidden
+  position: relative
+  transition: $transition__speed--medium
+  flex-grow: 2
+
+  &__wrapper
+    width: 100%
+    height: 100%
+  &__img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    filter: brightness(80%)
+    transition: $transition__speed--medium
+  &__date
+    position: absolute
+    background-color: $palette__accent--primary
+    width: 3.5rem
+    height: 3.5rem
+    top: 0
+    right: 1rem
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    line-height: 1
+
+  &__day
+    +font(28, 28, 500)
+    text-transform: uppercase
+    color: $palette__text--secondary
+  &__month
+    +font(12, 12, 500)
+    text-transform: uppercase
+    color: $palette__text--secondary
+
+  &__content
+    position: absolute
+    left: 0
+    bottom: 0
+    right: 0
+    padding: 1rem
+
+
+  &__title
+    +font(18, 18, 700)
+    text-transform: uppercase
+    color: $palette__text--secondary
+    line-height: 1
+    margin-bottom: 0.5rem
+
+  &__text
+    +font(16, 16, 500)
+    text-transform: lowercase
+    color: $palette__text--secondary
+    line-height: 1.1
+
+  &:hover
+    box-shadow: 2px 2px 5px rgba(0,0,0, 0.3)
+    .prw-news__img
+      filter: brightness(95%)

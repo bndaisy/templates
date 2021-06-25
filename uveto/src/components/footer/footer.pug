@@ -1,0 +1,64 @@
+mixin footer(parent)
+  footer.footer
+    .container
+      .logo.footer__logo
+        a.logo__link(href="#")
+          +icon(path, 'logo', 'logo-footer')
+      nav.nav.footer__nav.nav--popular
+        h2.nav__title Популярное
+        ul.nav__list
+          li.nav__item
+            a.nav__link(href="#") Вязание
+          li.nav__item
+            a.nav__link(href="#") Вышивание
+          li.nav__item
+            a.nav__link(href="#") Рисование
+          li.nav__item
+            a.nav__link(href="#") Бисероплетение
+          li.nav__item
+            a.nav__link(href="#") Шитье
+
+      nav.nav.footer__nav.nav--interesting
+        h2.nav__title Это интересно
+        ul.nav__list
+          li.nav__item
+            a.nav__link(href="#") Акции
+          li.nav__item
+            a.nav__link(href="#") Скидки
+          li.nav__item
+            a.nav__link(href="#") Подарки
+          li.nav__item
+            a.nav__link(href="#") Кладовка идей
+          li.nav__item
+            a.nav__link(href="#") Бренды
+      nav.nav.footer__nav.nav--help
+        h2.nav__title Помощь
+        ul.nav__list
+          li.nav__item
+            a.nav__link(href="#") Доставка и оплата
+          li.nav__item
+            a.nav__link(href="#") Обмен и возврат
+          li.nav__item
+            a.nav__link(href="#") Контакты
+          li.nav__item
+            a.nav__link(href="#") Как сделать заказ
+          li.nav__item
+            a.nav__link(href="#") Уголок покупателя
+      .social
+        form.info
+          h2.info__title Будь в курсе всех наших событий:
+          .info__subscribe
+            input.info__input(type='e-mail', placeholder='Ваша электронная почта')
+            button(submit).btn.btn--subscribe Подписаться
+      .payment
+        h2.payment__title Мы принимаем к оплате:
+        .payment__icons
+          +icon(path, 'footer', 'visa-payment')
+          +icon(path, 'footer', 'mastercard-payment')
+          +icon(path, 'footer', 'mir-payment')
+          +icon(path, 'footer', 'yandex-payment')
+          +icon(path, 'footer', 'webmoney-payment')
+      .footer__copy © 2013 - 2019 uveto.ru Все права защищены
+
+
+

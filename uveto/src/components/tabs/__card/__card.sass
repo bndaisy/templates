@@ -1,0 +1,35 @@
+.tabs
+  &__card
+    height: 22rem;
+    max-width: 15.625rem
+    width: 100%
+    background-color: $palette__background--main
+
+    &:not(:last-of-type)
+      margin-right: 1rem
+
+
+@media all and ( min-width: 1024px )
+  .tabs
+    &__card
+      transition: $transition__speed--medium
+
+      &:hover
+        cursor: pointer
+        box-shadow: 3px 3px 15px rgba(0,0,0, .2)
+
+        .card__about
+          display: flex
+        .card__description
+          display: flex
+          flex-direction: column
+        .card__img
+          height: 10.9375rem
+        .card__title
+          font-weight: 700
+        .card__content
+          height: 7.5rem
+          display: flex
+          flex-direction: column
+          justify-content: space-between
+

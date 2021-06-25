@@ -1,0 +1,4 @@
+mixin information(parent, { phone, worktime })
+  .information(class=`${parent}__information`)
+    a.information__call(role='Call', aria-label='Call' href=`${phone.url}`)= phone.title
+    span.information__worktime= worktime

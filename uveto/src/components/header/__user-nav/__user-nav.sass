@@ -1,0 +1,13 @@
+.header
+  &__user-nav
+    +font(12, 12, 400)
+    color: $palette__text--secondary
+    padding: .5rem 1rem
+
+
+@media all and ( min-width: 1024px )
+  .header
+    &__user-nav
+      transition: $transition__speed--medium
+      &:hover
+        color: $palette__text--accent

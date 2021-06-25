@@ -1,0 +1,30 @@
+.catalog
+  &__toggler
+    display: grid
+    grid-template-columns: repeat(2, minmax(min-content, max-content))
+    align-items: center
+    column-gap: .5rem
+
+    +font(16, 16, 400)
+    color: $palette__text--primary
+    text-transform: uppercase
+
+    padding: .75rem 1.5rem .75rem 1rem
+    border: 1px solid transparent
+    background-color: $palette__background--secondary
+
+
+@media all and ( min-width: 1024px )
+  .catalog
+    &__toggler
+      transition: $transition__speed--medium
+
+      &:hover
+        cursor: pointer
+
+        color: $palette__text--accent
+        border: 1px solid $palette__border--accent
+        background-color: $palette__background--main
+
+        .icon
+          fill: $palette__icon--accent
